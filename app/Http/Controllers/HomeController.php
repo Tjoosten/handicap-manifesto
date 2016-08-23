@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['signatures'] = count(Signatures::all());
+        $data['signatures'] = number_format(count(Signatures::all()));
         return view('welcome', $data);
     }
 }
