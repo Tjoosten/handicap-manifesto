@@ -17,7 +17,7 @@
                 color: #636b6f;
                 font-family: 'Raleway';
                 font-weight: 100;
-                height: 100vh;
+                height: 120vh;
                 margin: 0;
             }
 
@@ -59,33 +59,85 @@
                 text-transform: uppercase;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
+            .margin {
+                margin-top: 30px;
             }
         </style>
+        <link href="/css/app.css" rel="stylesheet">
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
-                </div>
-            @endif
+        {{-- Navbar --}}
+        {{-- END navbar --}}
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+        {{-- Content --}}
+        <div class="container">
+            <div class="row margin">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p>
+                                Mensen met een handicap hebben veel extra uitgaven en verbruiken. <br>
+                                Enkele vormen van ondersteuning, zoals bijvoorbeeld sociale tarieven voor nutsvoorzieningen en de erkenning voor het omnio-statuut,
+                                zijn echter gekoppeld aan de tegemoetkoming voor personen met een handicap.
+                            </p>
+                            <p>
+                                Deze worden berekend op basis van het 'bruto gezamenlijk belastbaar inkomen' te vinden op het aanslagbiljet voor de personenbelasting van 2 jaar terug.
+                            </p>
+                            <p>
+                                Het maximaal toegelaten inkomen ligt bovendien veel hoger voor een werkende invalide dan voor een niet-werkende invalide.
+                                Wij willen met de petitie een krachtig burgerinitiatief starten, zodat het federaal parlement ons voorstel op de agenda zet waarbij wij die
+                                ondersteuning voor een gehandicapte los willen koppelen van de uitbetaling van de tegemoetkoming.
+                                Bovendien vragen wij dat men zich voor die uitbetaling baseert op de <strong>HUIDIGE</strong> financiële situatie van de gehandicapte en niet op deze van 2 jaar eerder.
+                            </p>
+                            <p>
+                                Daarom willen we minstens <strong>100.000 handtekeningen</strong> verzamelen van Belgische stemgerechtigden, voorzien zijn van uw naam, woonplaats, geboortedatum en email.
+                            </p>
+                            <p>
+                                Alvast bij voorbaat dank!!
+                            </p>
+                        </div>
+                    </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Petitie tekenen:</div>
+                        <div class="panel-body">
+                            <form class="form-horizontal" action="" method="POST">
+                                {{-- CSRF TOKEN --}}
+                                {{ csrf_field() }}
+
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <input type="text" name="name" class="form-control" placeholder="Uw naam">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <input type="text" name="birth_date" class="form-control" placeholder="Uw geboortedatum">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <input type="text" name="address" class="form-control" placeholder="Uw adres">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <input type="text" name="city" class="form-control" placeholder="Uw stad">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <button type="submit" class="btn btn-sm btn-success">Insturen</button>
+                                <button type="reset" class="btn btn-sm btn-danger">Reset</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+        {{-- /Content --}}
     </body>
 </html>
