@@ -99,9 +99,15 @@
                     </div>
 
                     <div class="panel panel-default">
-                        <div class="panel-heading">Petitie tekenen:</div>
+                        <div class="panel-heading">
+                            Petitie tekenen:
+
+                            <div class="pull-right">
+                                {{ $signatures }}/<strong>100.000 Handtekeningen</strong>
+                            </div>
+                        </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" action="" method="POST">
+                            <form class="form-horizontal" action="{{ route('signature.insert') }}" method="POST">
                                 {{-- CSRF TOKEN --}}
                                 {{ csrf_field() }}
 
