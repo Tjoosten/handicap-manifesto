@@ -114,6 +114,10 @@
                             <div class="panel-footer">
                                 <button type="submit" class="btn btn-sm btn-success">Insturen</button>
                                 <button type="reset" class="btn btn-sm btn-danger">Reset</button>
+
+                                <span class="pull-right">
+                                    <a href="{{ route('disclaimer') }}" class="btn btn-sm btn-default">Disclaimer</a>
+                                </span>
                             </div>
                         </form>
                     </div>
