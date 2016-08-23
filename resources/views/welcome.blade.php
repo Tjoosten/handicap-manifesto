@@ -73,6 +73,12 @@
         <div class="container">
             <div class="row margin">
                 <div class="col-md-offset-2 col-md-8">
+                    @if (Session::has('class') && Session::has('message'))
+                        <div class="{{ Session::get('class') }}">
+                            {{ Session::get('message') }}
+                        </div>
+                    @endif
+
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <p>
