@@ -21,7 +21,6 @@ class CreateSignaturesTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('birth_date');
-            $table->string('address');
             $table->string('city');
             $table->timestamps();
         });

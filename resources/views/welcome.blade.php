@@ -71,33 +71,43 @@
                                 {{-- CSRF TOKEN --}}
                                 {{ csrf_field() }}
 
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                                     <div class="col-md-4">
                                         <input type="text" name="name" class="form-control" placeholder="Uw naam">
+
+                                        @if($errors->has('name'))
+                                            <span class="help-block">{{ $errors->first('name') }}</span>
+                                        @endif
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has('birth_date') ? 'has-error' : '' }}">
                                     <div class="col-md-4">
                                         <input type="text" name="birth_date" class="form-control" placeholder="Uw geboortedatum">
+
+                                        @if($errors->has('birth_date'))
+                                            <span class="help-block">{{ $errors->first('birth_date') }}</span>
+                                        @endif
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                                     <div class="col-md-6">
                                         <input type="text" name="email" class="form-control" placeholder="Uw email adres">
+
+                                        @if($errors->has('email'))
+                                            <span class="help-block">{{ $errors->first('email') }}</span>
+                                        @endif
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <input type="text" name="address" class="form-control" placeholder="Uw adres">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has('city') ? 'has-error' : '' }}">
                                     <div class="col-md-6">
                                         <input type="text" name="city" class="form-control" placeholder="Uw stad">
+
+                                        @if($errors->has('city'))
+                                            <span class="help-block">{{ $errors->first('city') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
