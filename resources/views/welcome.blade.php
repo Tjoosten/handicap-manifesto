@@ -85,6 +85,12 @@
 
                                 <div class="form-group">
                                     <div class="col-md-6">
+                                        <input type="text" name="email" class="form-control" placeholder="Uw email adres">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
                                         <input type="text" name="address" class="form-control" placeholder="Uw adres">
                                     </div>
                                 </div>

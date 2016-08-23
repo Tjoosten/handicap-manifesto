@@ -15,5 +15,5 @@ class Signatures extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'birth_date', 'address', 'city'];
+    protected $fillable = ['name', 'birth_date', 'address', 'city', 'email'];
 }

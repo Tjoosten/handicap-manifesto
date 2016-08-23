@@ -28,5 +28,6 @@ $factory->define(App\Signatures::class, function (Faker\Generator $faker) {
         'birth_date' => $faker->date('Y-m-d'),
         'address' => $faker->address,
         'city' => $faker->city,
+        'email' => $faker->email,
     ];
 });

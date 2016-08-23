@@ -24,7 +24,11 @@ class SignatureValidator extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|alpha',
+            'birth_date' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'city' => 'required',
+            'address' => 'required'
         ];
     }
 }
