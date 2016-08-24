@@ -75,7 +75,7 @@
                                     <div class="col-md-4">
                                         <input type="text" name="name" class="form-control" placeholder="Uw naam">
 
-                                        @if($errors->has('name'))
+                                        @if($errors->has('naam'))
                                             <span class="help-block">{{ $errors->first('naam') }}</span>
                                         @endif
                                     </div>
@@ -105,7 +105,7 @@
                                     <div class="col-md-6">
                                         <input type="text" name="city" class="form-control" placeholder="Uw stad">
 
-                                        @if($errors->has('city'))
+                                        @if($errors->has('stad'))
                                             <span class="help-block">{{ $errors->first('stad') }}</span>
                                         @endif
                                     </div>
