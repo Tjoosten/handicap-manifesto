@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Petitie: Een eerlijk statuut voor personen met een handicap.</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -73,7 +73,7 @@
 
                                 <div class="form-group {{ $errors->has('naam') ? 'has-error' : '' }}">
                                     <div class="col-md-4">
-                                        <input type="text" name="name" class="form-control" placeholder="Uw naam">
+                                        <input type="text" name="naam" class="form-control" placeholder="Uw naam">
 
                                         @if($errors->has('naam'))
                                             <span class="help-block">{{ $errors->first('naam') }}</span>
@@ -83,7 +83,7 @@
 
                                 <div class="form-group {{ $errors->has('geboortedatum') ? 'has-error' : '' }}">
                                     <div class="col-md-4">
-                                        <input type="text" name="birth_date" class="form-control" placeholder="Uw geboortedatum">
+                                        <input type="text" name="geboortedatum" class="form-control" placeholder="Uw geboortedatum">
 
                                         @if($errors->has('geboortedatum'))
                                             <span class="help-block">{{ $errors->first('geboortedatum') }}</span>
@@ -103,7 +103,7 @@
 
                                 <div class="form-group {{ $errors->has('stad') ? 'has-error' : '' }}">
                                     <div class="col-md-6">
-                                        <input type="text" name="city" class="form-control" placeholder="Uw stad">
+                                        <input type="text" name="stad" class="form-control" placeholder="Uw stad">
 
                                         @if($errors->has('stad'))
                                             <span class="help-block">{{ $errors->first('stad') }}</span>
