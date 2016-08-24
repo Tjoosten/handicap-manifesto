@@ -17,6 +17,15 @@
                 margin-top: 30px;
             }
         </style>
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.7&appId=737866286226228";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
         <link href="/css/app.css" rel="stylesheet">
     </head>
     <body>
@@ -36,6 +45,9 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a class="label label-info" href="{{ asset('document.pdf') }}">Printbare versie</a>
+                            <div class="pull-right">
+                                <div class="fb-share-button" data-href="https://manifesto.idevelopment.be" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanifesto.idevelopment.be%2F&amp;src=sdkpreparse">Delen</a></div>
+                            </div>
                         </div>
 
                         <div class="panel-body">
