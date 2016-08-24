@@ -18,10 +18,10 @@ class CreateSignaturesTable extends Migration
     {
         Schema::create('signatures', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('naam');
             $table->string('email');
-            $table->string('birth_date');
-            $table->string('city');
+            $table->string('geboortedatum');
+            $table->string('stad');
             $table->timestamps();
         });
     }

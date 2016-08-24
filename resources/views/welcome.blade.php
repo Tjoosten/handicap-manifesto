@@ -71,22 +71,22 @@
                                 {{-- CSRF TOKEN --}}
                                 {{ csrf_field() }}
 
-                                <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                                <div class="form-group {{ $errors->has('naam') ? 'has-error' : '' }}">
                                     <div class="col-md-4">
                                         <input type="text" name="name" class="form-control" placeholder="Uw naam">
 
                                         @if($errors->has('name'))
-                                            <span class="help-block">{{ $errors->first('name') }}</span>
+                                            <span class="help-block">{{ $errors->first('naam') }}</span>
                                         @endif
                                     </div>
                                 </div>
 
-                                <div class="form-group {{ $errors->has('birth_date') ? 'has-error' : '' }}">
+                                <div class="form-group {{ $errors->has('geboortedatum') ? 'has-error' : '' }}">
                                     <div class="col-md-4">
                                         <input type="text" name="birth_date" class="form-control" placeholder="Uw geboortedatum">
 
-                                        @if($errors->has('birth_date'))
-                                            <span class="help-block">{{ $errors->first('birth_date') }}</span>
+                                        @if($errors->has('geboortedatum'))
+                                            <span class="help-block">{{ $errors->first('geboortedatum') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -101,12 +101,12 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group {{ $errors->has('city') ? 'has-error' : '' }}">
+                                <div class="form-group {{ $errors->has('stad') ? 'has-error' : '' }}">
                                     <div class="col-md-6">
                                         <input type="text" name="city" class="form-control" placeholder="Uw stad">
 
                                         @if($errors->has('city'))
-                                            <span class="help-block">{{ $errors->first('city') }}</span>
+                                            <span class="help-block">{{ $errors->first('stad') }}</span>
                                         @endif
                                     </div>
                                 </div>

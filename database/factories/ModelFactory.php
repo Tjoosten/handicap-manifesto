@@ -24,9 +24,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Signatures::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'birth_date' => $faker->date('Y-m-d'),
-        'city' => $faker->city,
+        'naam' => $faker->name,
+        'geboortedatum' => $faker->date('Y-m-d'),
+        'stad' => $faker->city,
         'email' => $faker->email,
     ];
 });
