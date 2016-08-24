@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SignatureValidator;
 use App\Signatures;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -39,5 +40,21 @@ class SignatureController extends Controller
         session()->flash('message', $message);
 
         return redirect()->back();
+    }
+
+    /**
+     * Get the paper petition.
+     *
+     * @url:platform
+     * @see:phpunit
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function pdf()
+    {
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('pdf.signature');
+
+        return $pdf->stream();
     }
 }

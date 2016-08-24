@@ -34,6 +34,10 @@
                     @endif
 
                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="label label-info" href="{{ asset('document.pdf') }}">Printbare versie</a>
+                        </div>
+
                         <div class="panel-body">
                             <p>
                                 Mensen met een handicap hebben veel extra uitgaven en verbruiken. <br>
