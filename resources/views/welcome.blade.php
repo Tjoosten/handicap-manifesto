@@ -89,7 +89,7 @@
 
                                 <div class="form-group {{ $errors->has('naam') ? 'has-error' : '' }}">
                                     <div class="col-md-4">
-                                        <input type="text" name="naam" class="form-control" placeholder="Uw naam">
+                                        <input type="text" name="naam" class="form-control" placeholder="Uw naam en achternaam">
 
                                         @if($errors->has('naam'))
                                             <span class="help-block">{{ $errors->first('naam') }}</span>
