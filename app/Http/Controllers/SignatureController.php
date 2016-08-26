@@ -23,15 +23,10 @@ class SignatureController extends Controller
      */
     public function insert(SignatureValidator $input)
     {
-        $insert = Signatures::create($input->except('_token'));
+        Signatures::create($input->except('_token'));
 
-        if ($insert) {
-            $message = 'Bedankt om de petitie te ondertekenen.';
-            $class = 'alert alert-success';
-        } else {
-            $message = 'Wij konden uw ondertekening niet registreren.';
-            $class = 'alert alert-danger';
-        }
+        $message = 'Bedankt om de petitie te ondertekenen.';
+        $class = 'alert alert-success';
 
         session()->flash('class', $class);
         session()->flash('message', $message);
