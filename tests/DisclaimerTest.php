@@ -4,15 +4,21 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/**
+ * Class DisclaimerTest
+ */
 class DisclaimerTest extends TestCase
 {
     /**
-     * A basic test example.
+     * GET|HEAD: /disclaimer
+     * ROUTE:    disclaimer
      *
-     * @return void
+     * @group all
+     * @group disclaimer
      */
-    public function testExample()
+    public function testSignatureUrl()
     {
-        $this->assertTrue(true);
+        $route = $this->visit(route('disclaimer'));
+        $route->seeStatusCode(200);
     }
 }

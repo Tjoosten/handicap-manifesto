@@ -30,3 +30,10 @@ $factory->define(App\Signatures::class, function (Faker\Generator $faker) {
         'email' => $faker->email,
     ];
 });
+
+$factory->define(App\Statistics::class, function (Faker\Generator $faker) {
+    return [
+        'route' => $faker->url,
+        'ip_address' => $faker->ipv4,
+    ];
+});
