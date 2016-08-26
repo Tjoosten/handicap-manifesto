@@ -36,28 +36,46 @@
 
                                 {{-- Name form-group --}}
                                 <div class="form-group">
-
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="uw naam" name="naam" />
+                                    </div>
                                 </div>
 
                                 {{-- Email form-group --}}
                                 <div class="form-group">
-
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="uw email adres" name="email" />
+                                    </div>
                                 </div>
 
                                 {{-- Category form-group --}}
                                 <div class="form-group">
-
+                                    <div class="col-sm-5">
+                                        <select name="categorie" class="form-control">
+                                            <option value="">-- selecteer de categorie --</option>
+                                            <option value="1">Spellingsfout</option>
+                                            <option value="2">Probleem bij het tekenen</option>
+                                            <option value="3">Overige</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 {{-- Description form-group --}}
                                 <div class="form-group">
-
+                                    <div class="col-sm-8">
+                                        <textarea name="melding" class="form-control" placeholder="Beschrijving van het probleem" rows="7"></textarea>
+                                    </div>
                                 </div>
                         </div>
 
                         <div class="panel-footer">
-                            <button type="submit" class="btn btn-sm btn-success"></button>
+                            <button type="submit" class="btn btn-sm btn-success">Report</button>
                             <button type="reset" class="btn btn-sm btn-danger">Reset</button>
+
+                            <div class="pull-right">
+                                <a href="{{ route('home') }}" class="btn btn-sm btn-primary">Ga terug</a>
+                                <a href="{{ route('disclaimer') }}" class="btn btn-sm btn-default">Disclaimer</a>
+                            </div>
                         </div>
                     </div>
                 </div>
