@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
- * Class SignatureTest
+ * Class SignatureTest.
  */
 class SignatureTest extends TestCase
 {
@@ -13,10 +12,9 @@ class SignatureTest extends TestCase
     // DatabaseTransactions = used for simulation database transactions.
     use DatabaseMigrations, DatabaseTransactions;
 
-
     /**
      * POST:   /signature
-     * ROUTE:  signature.insert
+     * ROUTE:  signature.insert.
      *
      * @group all
      * @group signatures
@@ -24,14 +22,14 @@ class SignatureTest extends TestCase
     public function testSignaturePost()
     {
         // Factories & named route
-        $url       = route('signature.insert');
+        $url = route('signature.insert');
         $signature = factory(App\User::class)->create();
 
         // Input.
-        $input['naam']          = 'Jhon Doe';
-        $input['email']         = 'JhonDoe@example.org';
+        $input['naam'] = 'Jhon Doe';
+        $input['email'] = 'JhonDoe@example.org';
         $input['geboortedatum'] = '00/00/1995';
-        $input['stad']          = 'Silicon Valley';
+        $input['stad'] = 'Silicon Valley';
 
         // Validation errors.
         $routeErr = $this->post($url, []);      // Validation errors url.
@@ -43,12 +41,11 @@ class SignatureTest extends TestCase
         $routeSuc = $this->post($url, $input);  // Without validation errors url.
         $routeSuc->seeInDatabase('signatures', $input);
         $routeSuc->seeStatusCode(302);
-
     }
 
     /**
      * GET|HEAD: /
-     * ROUTE:    Home
+     * ROUTE:    Home.
      *
      * @group all
      * @group signatures
@@ -61,7 +58,7 @@ class SignatureTest extends TestCase
 
     /**
      * GET|HEAD: signature/pdf
-     * ROUTE:    signature.pdf
+     * ROUTE:    signature.pdf.
      *
      * @group all
      * @group signatures

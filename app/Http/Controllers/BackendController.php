@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
 /**
- * Class BackendController
- * @package App\Http\Controllers
+ * Class BackendController.
  */
 class BackendController extends Controller
 {
@@ -22,6 +17,5 @@ class BackendController extends Controller
 
     public function index()
     {
-
     }
 }

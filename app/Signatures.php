@@ -5,8 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Signatures
- * @package App
+ * Class Signatures.
  */
 class Signatures extends Model
 {
