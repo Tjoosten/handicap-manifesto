@@ -15,6 +15,7 @@ class CreateErrorCategoriesTable extends Migration
     {
         Schema::create('error_categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('categorie');
             $table->timestamps();
         });
     }
