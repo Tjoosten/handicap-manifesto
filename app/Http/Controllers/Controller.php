@@ -22,7 +22,7 @@ class Controller extends BaseController
     {
         Statistics::create([
             'route' =>  Request::url(),
-            'ip_address' => Request::ip()
+            'ip_address' => Request::ip(),
         ]);
     }
 }

@@ -1,17 +1,14 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
- * Class DisclaimerTest
+ * Class DisclaimerTest.
  */
 class DisclaimerTest extends TestCase
 {
     /**
      * GET|HEAD: /disclaimer
-     * ROUTE:    disclaimer
+     * ROUTE:    disclaimer.
      *
      * @group all
      * @group disclaimer
