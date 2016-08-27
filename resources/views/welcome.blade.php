@@ -90,7 +90,7 @@
 
                                 <div class="form-group {{ $errors->has('naam') ? 'has-error' : '' }}">
                                     <div class="col-md-4">
-                                        <input type="text" name="naam" class="form-control" placeholder="Uw naam en achternaam">
+                                        <input type="text"  value="{{ old('naam') }}" name="naam" class="form-control" placeholder="Uw naam en achternaam">
 
                                         @if($errors->has('naam'))
                                             <span class="help-block">{{ $errors->first('naam') }}</span>
@@ -100,7 +100,7 @@
 
                                 <div class="form-group {{ $errors->has('geboortedatum') ? 'has-error' : '' }}">
                                     <div class="col-md-4">
-                                        <input type="text" name="geboortedatum" class="form-control" placeholder="Uw geboortedatum">
+                                        <input type="text" value="{{ old('geboortedatum') }}" name="geboortedatum" class="form-control" placeholder="Uw geboortedatum">
 
                                         @if($errors->has('geboortedatum'))
                                             <span class="help-block">{{ $errors->first('geboortedatum') }}</span>
@@ -110,7 +110,7 @@
 
                                 <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                                     <div class="col-md-6">
-                                        <input type="text" name="email" class="form-control" placeholder="Uw email adres">
+                                        <input type="text" value="{{ old('email') }}" name="email" class="form-control" placeholder="Uw email adres">
 
                                         @if($errors->has('email'))
                                             <span class="help-block">{{ $errors->first('email') }}</span>
@@ -120,7 +120,7 @@
 
                                 <div class="form-group {{ $errors->has('stad') ? 'has-error' : '' }}">
                                     <div class="col-md-6">
-                                        <input type="text" name="stad" class="form-control" placeholder="Uw stad">
+                                        <input type="text" value="{{ old('stad') }}" name="stad" class="form-control" placeholder="Uw stad">
 
                                         @if($errors->has('stad'))
                                             <span class="help-block">{{ $errors->first('stad') }}</span>
