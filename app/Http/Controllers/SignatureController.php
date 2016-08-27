@@ -5,13 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SignatureValidator;
 use App\Signatures;
 use Barryvdh\DomPDF\PDF;
-use Illuminate\Http\Request;
 
-use App\Http\Requests;
 
 /**
- * Class SignatureController
- * @package App\Http\Controllers
+ * Class SignatureController.
  */
 class SignatureController extends Controller
 {
@@ -26,15 +23,10 @@ class SignatureController extends Controller
      */
     public function insert(SignatureValidator $input)
     {
-        $insert = Signatures::create($input->except('_token'));
+        Signatures::create($input->except('_token'));
 
-        if ($insert) {
-            $message = 'Bedankt om de petitie te ondertekenen.';
-            $class   = 'alert alert-success';
-        } else {
-            $message = 'Wij konden uw ondertekening niet registreren.';
-            $class   = 'alert alert-danger';
-        }
+        $message = 'Bedankt om de petitie te ondertekenen.';
+        $class = 'alert alert-success';
 
         session()->flash('class', $class);
         session()->flash('message', $message);

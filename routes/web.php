@@ -14,6 +14,7 @@
 Route::auth();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/disclaimer', 'DisclaimerController@index')->name('disclaimer');
+
 Route::post('/signature', 'SignatureController@insert')->name('signature.insert');
 Route::get('/signature/pdf', 'SignatureController@pdf')->name('signature.pdf');
 

@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Signatures;
-use Illuminate\Http\Request;
 
 /**
- * Class HomeController
- * @package App\Http\Controllers
+ * Class HomeController.
  */
 class HomeController extends Controller
 {
@@ -19,6 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         $data['signatures'] = number_format(count(Signatures::all()));
+
         return view('welcome', $data);
     }
 }
