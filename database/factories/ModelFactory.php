@@ -37,3 +37,21 @@ $factory->define(App\Statistics::class, function (Faker\Generator $faker) {
         'ip_address' => $faker->ipv4,
     ];
 });
+
+$factory->define(App\ErrorCategory::class, function (Faker\Generator $faker) {
+    return [
+        //
+    ];
+});
+
+$factory->define(App\Errors::class, function (Faker\Generator $faker) {
+    return [
+      //
+    ];
+});
+
+$factory->define(App\ErrorStatus::class, function (Faker\Generator $faker) {
+    return [
+        //
+    ];
+});
