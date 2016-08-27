@@ -16,4 +16,14 @@ class Errors extends Model
      * @var array
      */
     protected $fillable = [];
+
+    /**
+     * Label relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function label()
+    {
+        return $this->belongsTo('App\ErrorStatus');
+    }
 }

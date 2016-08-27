@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Errors;
+use App\Http\Requests\ErrorValidator;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -31,10 +33,16 @@ class ErrorController extends Controller
      * @url:platform
      * @see:phpunit
      *
+     * @param  ErrorValidator $input
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store()
+    public function store(ErrorValidator $input)
     {
+        Errors::create($input->except('_token'));
+
+        session()->flash('class', 'alert alert-success');
+        session()->flash('message', 'Jouw feedback is opgeslagen en word nsel behandelt.');
+
         return redirect()->back();
     }
 
