@@ -17,5 +17,6 @@ class BackendController extends Controller
 
     public function index()
     {
+        //
     }
 }
