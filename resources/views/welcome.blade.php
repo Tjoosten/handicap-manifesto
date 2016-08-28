@@ -16,6 +16,16 @@
             .margin {
                 margin-top: 30px;
             }
+
+            .form-control::-moz-placeholder {
+                color: #7b858a;
+            }
+            .form-control:-ms-input-placeholder {
+                color: #7b858a;
+            }
+            .form-control::-webkit-input-placeholder {
+                color: #7b858a;
+            }
         </style>
 
         <div id="fb-root"></div>
