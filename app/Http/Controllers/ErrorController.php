@@ -39,7 +39,8 @@ class ErrorController extends Controller
      */
     public function store(ErrorValidator $input)
     {
-        Errors::create($input->except('_token'));
+        $error = Errors::create($input->except('_token'));
+        Errors::find($error->id)->label()->associate(1);
 
         session()->flash('class', 'alert alert-success');
         session()->flash('message', 'Jouw feedback is opgeslagen en word nsel behandelt.');

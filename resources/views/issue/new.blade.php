@@ -40,7 +40,7 @@
                         <div class="panel-heading">Meld een probleem:</div>
 
                         <div class="panel-body">
-                            <form action="" class="form-horizontal" method="POST">
+                            <form action="{{ route('report.store') }}" class="form-horizontal" method="POST">
                                 {{-- CSRF Token --}}
                                 {{ csrf_field() }}
 
@@ -65,7 +65,7 @@
                                             <option value="">-- selecteer de categorie --</option>
 
                                             @foreach($statusses as $status)
-                                                <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                                <option value="{{ $status->id }}">{{ $status->categorie }}</option>
                                             @endforeach
                                         </select>
                                     </div>
