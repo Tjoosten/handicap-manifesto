@@ -15,7 +15,17 @@ class Errors extends Model
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['naam', 'email', 'melding', 'categorie'];
+
+    /**
+     * Category relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo('App\ErrorCategory', 'id', 'categorie');
+    }
 
     /**
      * Label relation.

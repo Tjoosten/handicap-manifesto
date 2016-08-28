@@ -4,6 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class ErrorValidator
+ * @package App\Http\Requests
+ */
 class ErrorValidator extends FormRequest
 {
     /**
@@ -13,7 +17,7 @@ class ErrorValidator extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +28,10 @@ class ErrorValidator extends FormRequest
     public function rules()
     {
         return [
-            //
+            'naam' => 'required',
+            'email' => 'required|email',
+            'categorie' => 'required',
+            'melding' => 'required'
         ];
     }
 }

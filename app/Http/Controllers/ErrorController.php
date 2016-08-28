@@ -32,18 +32,21 @@ class ErrorController extends Controller
      * Store the problem report in the database.
      *
      * @url:platform
-     * @see:phpunit
+     * @see:phpunit   TODO: Need to write.
      *
      * @param  ErrorValidator $input
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ErrorValidator $input)
     {
-        $error = Errors::create($input->except('_token'));
-        Errors::find($error->id)->label()->associate(1);
+        $error = Errors::create($input->except(['_token']));
+
+        $relation = Errors::find($error->id);
+        $relation->label()->associate(1);
+        $relation->category()->associate($input->categorie);
 
         session()->flash('class', 'alert alert-success');
-        session()->flash('message', 'Jouw feedback is opgeslagen en word nsel behandelt.');
+        session()->flash('message', 'Jouw feedback is opgeslagen en word snel behandelt.');
 
         return redirect()->back();
     }
