@@ -19,3 +19,5 @@ Route::post('/signature', 'SignatureController@insert')->name('signature.insert'
 Route::get('/signature/pdf', 'SignatureController@pdf')->name('signature.pdf');
 
 Route::get('/report', 'ErrorController@register')->name('report');
+
+Route::get('/backend', 'BackendController@index')->name('backend');
