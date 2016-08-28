@@ -16,25 +16,13 @@ class ErrorCategoriesSeeder extends Seeder
     public function run()
     {
         $data = [
-            [
-                'name'        => 'Probleem bij het tekenen',
-                'description' => 'Probleem bij het tekenen',
-            ],
-            [
-                'name'        => 'Spellingsfout',
-                'description' => 'Spellingsfout',
-            ],
-            [
-                'name'        => 'Overige',
-                'decription'  => 'Overige',
-            ],
-            [
-                'name'        => 'Feedback',
-                'description' => 'Feedback'
-            ]
+            ['categorie' => 'Probleem bij het tekenen'],
+            ['categorie' => 'Spellingsfout'],
+            ['categorie' => 'Overige'],
+            ['categorie' => 'Feedback']
         ];
 
-        $table = DB::table('error_statuses');
+        $table = DB::table('error_categories');
         $table->delete();
         $table->insert($data);
     }

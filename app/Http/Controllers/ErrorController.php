@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ErrorCategory;
 use App\Errors;
 use App\Http\Requests\ErrorValidator;
 use Illuminate\Http\Request;
@@ -67,7 +68,8 @@ class ErrorController extends Controller
      */
     public function register()
     {
-        return view('issue.new');
+        $data['statusses'] = ErrorCategory::all();
+        return view('issue.new', $data);
     }
 
     /**

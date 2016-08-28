@@ -63,9 +63,10 @@
                                     <div class="col-sm-5">
                                         <select name="categorie" class="form-control">
                                             <option value="">-- selecteer de categorie --</option>
-                                            <option value="1">Spellingsfout</option>
-                                            <option value="2">Probleem bij het tekenen</option>
-                                            <option value="3">Overige</option>
+
+                                            @foreach($statusses as $status)
+                                                <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
