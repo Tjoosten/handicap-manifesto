@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SignatureValidator;
 use App\Signatures;
 use Barryvdh\DomPDF\PDF;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -48,11 +49,15 @@ class SignatureController extends Controller
      */
     public function insert(SignatureValidator $input)
     {
+        $current = Carbon::now();
+        $birth   = $input->dag .'/'. $input->maand .'/'. $input->jaar;
+
         Signatures::create([
             'naam'          => $input->naam,
-            'geboortedatum' => $input->dag .'/'. $input->maand .'/'. $input->jaar,
+            'geboortedatum' => $birth,
             'email'         => $input->email,
             'stad'          => $input->stad,
+            'leeftijd'      => $current->diffInYears(Carbon::parse($birth))
         ]);
 
         $message = 'Bedankt om de petitie te ondertekenen.';
