@@ -33,6 +33,7 @@ class SignatureController extends Controller
         $data['unknown']    = $sign->where('leeftijd', '<', 0)->orWhere('leeftijd', 'geen')->count();
         $data['adult']      = $sign->where('leeftijd', '>', 18)->count();
         $data['youth']      = $sign->where('leeftijd', '<', 18)->count();
+        $data['signCount']  = $sign->count();
         $data['signatures'] = $sign->paginate(50); // All the signatures
         return view('signature.index', $data);
     }

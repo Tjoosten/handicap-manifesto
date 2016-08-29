@@ -38,9 +38,9 @@
                         <div class="pull-right">
                             {{-- All the signatures --}}
                             @if (count($signatures) === 1)
-                                <span class="label label-info">{{ count($signatures) }} Handtekening</span>
+                                <span class="label label-info">{{ count($signCount) }} Handtekening</span>
                             @else
-                                <span class="label label-inf">{{ count($signatures) }} Handtekeningen</span>
+                                <span class="label label-inf">{{ count($signCount) }} Handtekeningen</span>
                             @endif
                             {{-- /All the signatures --}}
 
@@ -80,6 +80,10 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        @if ($signCount > 50)
+                            {{ $signatures->render() }}
+                        @endif
                     </div>
                 </div>
                 {{-- /Signaturs  --}}

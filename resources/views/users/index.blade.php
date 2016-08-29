@@ -9,8 +9,8 @@
                     <div class="panel-heading">Menu:</div>
 
                     <div class="list-group">
-                        <a href="" class="list-group-item">Login overzicht</a>
-                        <a href="" class="list-group-item">Registreer login</a>
+                        <a href="{{ route('users') }}" class="list-group-item">Login overzicht</a>
+                        <a href="{{ url('/register') }}" class="list-group-item">Registreer login</a>
                         <a href="" class="list-group-item">Permissies</a>
                     </div>
                 </div>
