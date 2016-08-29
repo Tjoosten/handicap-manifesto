@@ -22,6 +22,8 @@ Route::get('/signature/pdf', 'SignatureController@pdf')->name('signature.pdf');
 Route::get('/signature/backend', 'SignatureController@index')->name('signature.backend');
 
 Route::get('/users', 'LoginController@index')->name('users');
+Route::get('/users/update', 'LoginController@edit')->name('profile.edit');
+Route::post('/users/update', 'LoginController@update')->name('profile.update');
 Route::get('/users/destroy/{id}', 'LoginController@destroy')->name('users.destroy');
 
 // Export routes

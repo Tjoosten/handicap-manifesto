@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileSettingsUpdate;
 use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class LoginController
@@ -35,6 +37,60 @@ class LoginController extends Controller
     {
         $data['users'] = User::paginate(15);
         return view('users.index', $data);
+    }
+
+
+    /**
+     * Change profile settings view.
+     *
+     * @urk:platform  GET|HEAD:
+     * @see:phpunit   TODO: Write test
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit()
+    {
+        $data['user'] = auth()->user();
+        return view('users.update', $data);
+    }
+
+    /**
+     * Change the profile settings in the database.
+     *
+     * @url:platform  POST:
+     * @see:phpunit   TODO: Write test.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request)
+    {
+        $infoValidator = Validator::make($request->all(), [
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255',
+        ]);
+
+        if ($infoValidator->fails()) {
+            return redirect()->back()->withErrors($infoValidator)->withInput();
+        }
+
+        $passValidator = Validator::make($request->all(), [
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        if ($passValidator->fails()) {
+            return redirect()->back()->withErrors($passValidator);
+        }
+
+        $user   = auth()->user();
+        $filter = ['_token', 'password_confirmation'];
+
+        User::find($user->id)->update($request->except($filter));
+
+        session()->flash('class', 'alert alert-success');
+        session()->flash('message', 'Uw profile is bijgewerkt.');
+
+        return redirect()->back();
     }
 
     /**
