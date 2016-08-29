@@ -13,6 +13,30 @@ use Barryvdh\DomPDF\PDF;
 class SignatureController extends Controller
 {
     /**
+     * SignatureController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['insert', 'pdf']]);
+    }
+
+    /**
+     * Get all the signatures in the index.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        $data['signatures'] = Signatures::paginate(50);
+        return view('signature.index', $data);
+    }
+
+    public function search()
+    {
+
+    }
+
+    /**
      * Insert a new signature.
      *
      * @url:platform   POST: /signature

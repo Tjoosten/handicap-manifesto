@@ -36,18 +36,19 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                   Handicap-manifesto
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
+                {{-- Left Side Of Navbar --}}
                 <ul class="nav navbar-nav">
-                    &nbsp;<li>
-                    </li>
+                    <li><a href="">Manifest</a></li>
+                    <li><a href="{{ route('signature.backend') }}">Handtekeningen</a></li>
+                    <li><a href="{{ route('users') }}">Login beheer</a></li>
                 </ul>
 
-                <!-- Right Side Of Navbar -->
+                {{-- Right Side Of Navbar --}}
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
@@ -65,6 +66,11 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="">
+                                        Profiel configuratie
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
