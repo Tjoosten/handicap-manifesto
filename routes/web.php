@@ -24,6 +24,9 @@ Route::get('/signature/backend', 'SignatureController@index')->name('signature.b
 Route::get('/users', 'LoginController@index')->name('users');
 Route::get('/users/destroy/{id}', 'LoginController@destroy')->name('users.destroy');
 
+// Export routes
+Route::get('/export/csv', 'SignatureController@exportCsv')->name('export.csv');
+
 Route::get('/report', 'ErrorController@register')->name('report');
 Route::post('/report', 'ErrorController@store')->name('report.store');
 

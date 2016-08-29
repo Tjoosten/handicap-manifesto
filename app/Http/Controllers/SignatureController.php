@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SignatureValidator;
 use App\Signatures;
 use Barryvdh\DomPDF\PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 /**
@@ -77,5 +78,15 @@ class SignatureController extends Controller
         $pdf->loadView('pdf.signature');
 
         return $pdf->stream();
+    }
+
+    public function exportCsv()
+    {
+        Excel::create('Signatures', function ($csv) {
+            $csv->sheet('all', function($sheet) {
+                $signatures = Signatures::all();
+                $sheet->loadView('signature.report', compact('signatures'));
+            });
+        })->download('csv');
     }
 }
