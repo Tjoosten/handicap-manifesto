@@ -152,7 +152,25 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <span class="help-block"><i>Geboortedatum</i></span>
+                                            @if ($errors->has('dag') || $errors->has('maand') || $errors->has('jaar'))
+                                                <span class="help-block">
+                                                    <ul class="list-unstyled">
+                                                    @if ($errors->has('dag'))
+                                                            <li><span class="text-danger">* {{ $errors->first('dag') }}</span></li>
+                                                        @endif
+
+                                                        @if ($errors->has('maand'))
+                                                            <li><span class="text-danger">* {{ $errors->first('maand') }}</span></li>
+                                                        @endif
+
+                                                        @if ($errors->has('jaar'))
+                                                            <li><span class="text-danger">* {{ $errors->first('jaar') }}</span></li>
+                                                        @endif
+                                                </ul>
+                                                </span>
+                                            @else
+                                                <span class="help-block"><i>Geboortedatum</i></span>
+                                            @endif
                                         </div>
                                 </div>
 
