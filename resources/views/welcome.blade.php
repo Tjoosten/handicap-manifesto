@@ -110,9 +110,9 @@
                                 </div>
 
                                 <div class="form-group {{ $errors->has('geboortedatum') ? 'has-error' : '' }}">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 {{ $errors->has('dag') ? 'has-error' : '' }}">
                                             <select name="dag" class="form-control">
-                                                <option value="">Dag</option>
+                                                <option value="">- Dag -</option>
 
                                                 @for ($int = 1; $int < 32; $int++)
                                                     @if ($int < 10)
@@ -124,9 +124,9 @@
                                             </select>
                                         </div>
 
-                                        <div style="padding-right:0; padding-left:0;" class="col-md-2">
+                                        <div style="padding-right:0; padding-left:0;" class="col-md-2 {{ $errors->has('maand') ? 'has-error' : '' }}">
                                             <select name="maand" class="form-control">
-                                                <option value="">Maand</option>
+                                                <option value="" selected>- Maand -</option>
                                                 <option value="01">Januari</option>
                                                 <option value="02">Februari</option>
                                                 <option value="03">Maart</option>
@@ -142,8 +142,9 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 {{ $errors->has('jaar') ? 'has-error' : '' }}">
                                             <select name="jaar" class="form-control">
+                                                <option value="" selected> - Jaar -</option>
                                                 @for ($jaar = 1916; $jaar < 2017; $jaar++)
                                                     <option value="{!! $jaar !!}">{!! $jaar !!}</option>
                                                 @endfor
@@ -151,11 +152,7 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            @if($errors->has('geboortedatum'))
-                                                <span class="help-block">{{ $errors->first('geboortedatum') }}</span>
-                                            @else
-                                                <span class="help-block"><i>Geboortedatum</i></span>
-                                            @endif
+                                            <span class="help-block"><i>Geboortedatum</i></span>
                                         </div>
                                 </div>
 

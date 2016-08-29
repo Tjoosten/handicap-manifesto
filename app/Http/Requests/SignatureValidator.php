@@ -25,7 +25,9 @@ class SignatureValidator extends FormRequest
     {
         return [
             'naam' => 'required',
-            'geboortedatum' => 'required',
+            'dag' => 'required',
+            'jaar' => 'required',
+            'maand' => 'required',
             'email' => 'required|email|unique:signatures,email',
             'stad' => 'required',
         ];
