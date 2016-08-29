@@ -25,11 +25,15 @@ class SignatureController extends Controller
     /**
      * Get all the signatures in the index.
      *
+     * @param  Signatures $sign
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Signatures $sign)
     {
-        $data['signatures'] = Signatures::paginate(50);
+        $data['unknown']    = $sign->where('leeftijd', '<', 0)->orWhere('leeftijd', 'geen')->count();
+        $data['adult']      = $sign->where('leeftijd', '>', 18)->count();
+        $data['youth']      = $sign->where('leeftijd', '<', 18)->count();
+        $data['signatures'] = $sign->paginate(50); // All the signatures
         return view('signature.index', $data);
     }
 

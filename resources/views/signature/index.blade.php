@@ -36,13 +36,22 @@
                         Handtekeningen overzicht:
 
                         <div class="pull-right">
-                            @if (count($signatures) > 0 && count($signatures) === 1)
-                                <span class="label label-success">{{ count($signatures) }} Handtekening</span>
-                            @elseif (count($signatures) === 0)
-                                <span class="label label-danger">{{ count($signatures) }} Handtekeningen</span>
+                            {{-- All the signatures --}}
+                            @if (count($signatures) === 1)
+                                <span class="label label-info">{{ count($signatures) }} Handtekening</span>
                             @else
-                                <span class="label label-success">{{ count($signatures) }} Handtekeningen</span>
+                                <span class="label label-inf">{{ count($signatures) }} Handtekeningen</span>
                             @endif
+                            {{-- /All the signatures --}}
+
+                            {{-- Adult signatues--}}
+                            <span class="label label-success">{{ $adult }} Volwassenen</span>
+
+                            {{-- Youth signatures --}}
+                            <span class="label label-warning">{{ $youth }} Jongeren</span>
+
+                            {{-- Unknown age signatures --}}
+                            <span class="label label-danger">{{ $unknown }} Onbekend</span>
                         </div>
                     </div>
 
