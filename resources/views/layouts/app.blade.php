@@ -46,6 +46,8 @@
                     <li><a href="">Manifest</a></li>
                     <li><a href="{{ route('signature.backend') }}">Handtekeningen</a></li>
                     <li><a href="{{ route('users') }}">Login beheer</a></li>
+                    <li><a href="">Feedback</a></li>
+                    <li><a href="">Instellingen</a></li>
                 </ul>
 
                 {{-- Right Side Of Navbar --}}
