@@ -65,6 +65,7 @@ class SignatureController extends Controller
         $data['youth']      = Signatures::where('leeftijd', '<', 18)->count();
         $data['signCount']  = Signatures::count();
         $data['signatures'] = Signatures::where('naam', 'LIKE', "%$term%")->orderBy('naam', 'asc')->paginate(50);
+        
         return view('signature.index', $data);
     }
 
