@@ -80,6 +80,9 @@ class SignatureController extends Controller
         return $pdf->stream();
     }
 
+    /**
+     * Export the data to csv.
+     */
     public function exportCsv()
     {
         Excel::create('Signatures', function ($csv) {
@@ -88,5 +91,44 @@ class SignatureController extends Controller
                 $sheet->loadView('signature.report', compact('signatures'));
             });
         })->download('csv');
+    }
+
+    /**
+     * Export the data to excel.
+     */
+    public function exportExcel()
+    {
+        Excel::create('Signatures', function ($excel) {
+            $excel->sheet('all', function($sheet) {
+                $signatures = Signatures::all();
+                $sheet->loadView('signature.report', compact('signatures'));
+            });
+        })->download('xls');
+    }
+
+    /**
+     * Export the data to excel 2007.
+     */
+    public function exportExcel2007()
+    {
+        Excel::create('Signatures', function ($excel2007) {
+            $excel2007->sheet('all', function($sheet) {
+                $signatures = Signatures::all();
+                $sheet->loadView('signature.report', compact('signatures'));
+            });
+        })->download('xlsx');
+    }
+
+    /**
+     * Export the data to pdf.
+     */
+    public function exportPdf()
+    {
+        Excel::create('Signatures', function ($pdf) {
+            $pdf->sheet('all', function($sheet) {
+                $signatures = Signatures::all();
+                $sheet->loadView('signature.report', compact('signatures'));
+            });
+        })->download('pdf');
     }
 }

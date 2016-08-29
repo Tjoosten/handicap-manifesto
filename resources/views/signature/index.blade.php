@@ -20,7 +20,10 @@
                         </button>
 
                         <ul style="right: 0; left: auto;" class="dropdown-menu">
+                            <li><a href="{{ route('export.excel') }}">Excel bestand</a></li>
+                            <li><a href="{{ route('export.excel.2007') }}">Excel2007 bestand</a></li>
                             <li><a href="{{ route('export.csv') }}">CSV Bestand</a></li>
+                            <li><a href="{{ route('export.pdf') }}">PDF Bestand</a></li>
                         </ul>
                     </div>
                 </div>

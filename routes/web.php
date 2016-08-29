@@ -26,6 +26,9 @@ Route::get('/users/destroy/{id}', 'LoginController@destroy')->name('users.destro
 
 // Export routes
 Route::get('/export/csv', 'SignatureController@exportCsv')->name('export.csv');
+Route::get('/export/pdf', 'SignatureController@exportPdf')->name('export.pdf');
+Route::get('/export/excel', 'SignatureController@exportExcel')->name('export.excel');
+Route::get('/export/excel/2007', 'SignatureController@exportExcel2007')->name('export.excel.2007');
 
 Route::get('/report', 'ErrorController@register')->name('report');
 Route::post('/report', 'ErrorController@store')->name('report.store');
