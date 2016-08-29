@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <style>
+        <style type="text/css">
 
             .margin {
                 margin-top: 30px;
@@ -110,13 +110,53 @@
                                 </div>
 
                                 <div class="form-group {{ $errors->has('geboortedatum') ? 'has-error' : '' }}">
-                                    <div class="col-md-4">
-                                        <input type="text" value="{{ old('geboortedatum') }}" name="geboortedatum" class="form-control" placeholder="Uw geboortedatum">
+                                        <div class="col-md-2">
+                                            <select name="dag" class="form-control">
+                                                <option value="">Dag</option>
 
-                                        @if($errors->has('geboortedatum'))
-                                            <span class="help-block">{{ $errors->first('geboortedatum') }}</span>
-                                        @endif
-                                    </div>
+                                                @for ($int = 1; $int < 32; $int++)
+                                                    @if ($int < 10)
+                                                        <option value="0{!! $int !!}">0{!! $int !!}</option>
+                                                    @else
+                                                        <option value="{!! $int !!}">{!! $int !!}</option>
+                                                    @endif
+                                                @endfor
+                                            </select>
+                                        </div>
+
+                                        <div style="padding-right:0; padding-left:0;" class="col-md-2">
+                                            <select name="maand" class="form-control">
+                                                <option value="">Maand</option>
+                                                <option value="01">Januari</option>
+                                                <option value="02">Februari</option>
+                                                <option value="03">Maart</option>
+                                                <option value="04">April</option>
+                                                <option value="05">Mei</option>
+                                                <option value="06">Juni</option>
+                                                <option value="07">Juli</option>
+                                                <option value="08">Augustus</option>
+                                                <option value="09">September</option>
+                                                <option value="10">Oktober</option>
+                                                <option value="11">November</option>
+                                                <option value="12">December</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <select name="jaar" class="form-control">
+                                                @for ($jaar = 1916; $jaar < 2017; $jaar++)
+                                                    <option value="{!! $jaar !!}">{!! $jaar !!}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            @if($errors->has('geboortedatum'))
+                                                <span class="help-block">{{ $errors->first('geboortedatum') }}</span>
+                                            @else
+                                                <span class="help-block"><i>Geboortedatum</i></span>
+                                            @endif
+                                        </div>
                                 </div>
 
                                 <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
