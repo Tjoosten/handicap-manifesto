@@ -6,8 +6,10 @@
             <div class="col-sm-12">
                 {{-- Search box --}}
                 <div style="margin-bottom: 15px;" class="pull-left">
-                    <form action="" method="POST" class="form-inline">
-                        <input type="text" id="name" name="name" placeholder="Zoekterm" class="form-control">
+                    <form action="{{ route('signature.search') }}" method="POST" class="form-inline">
+                        {{ csrf_field() }}
+
+                        <input type="text" id="name" name="name" placeholder="Zoekterm (naam)" class="form-control">
                         <button type="submit" class="btn btn-primary">Zoek</button>
                     </form>
                 </div>
@@ -40,7 +42,7 @@
                             @if (count($signatures) === 1)
                                 <span class="label label-info">{{ count($signCount) }} Handtekening</span>
                             @else
-                                <span class="label label-inf">{{ count($signCount) }} Handtekeningen</span>
+                                <span class="label label-info">{{ count($signCount) }} Handtekeningen</span>
                             @endif
                             {{-- /All the signatures --}}
 

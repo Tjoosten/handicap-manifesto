@@ -6,6 +6,7 @@ use App\Http\Requests\SignatureValidator;
 use App\Signatures;
 use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -25,6 +26,9 @@ class SignatureController extends Controller
     /**
      * Get all the signatures in the index.
      *
+     * @url:platform  GET|HEAD:
+     * @see:phpunit   TODO: Build up the test.
+     *
      * @param  Signatures $sign
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -34,13 +38,34 @@ class SignatureController extends Controller
         $data['adult']      = $sign->where('leeftijd', '>', 18)->count();
         $data['youth']      = $sign->where('leeftijd', '<', 18)->count();
         $data['signCount']  = $sign->count();
-        $data['signatures'] = $sign->paginate(50); // All the signatures
+        $data['signatures'] = $sign->paginate(50);
+
         return view('signature.index', $data);
     }
 
-    public function search()
+    /**
+     * Search a signature in the database.
+     *
+     * @url:platform  GET|HEAD:
+     * @see:phpunit   TODO: Build up the test.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
     {
+        $term = $request->get('name');
 
+        if (empty($term)) {
+            return redirect()->back(302);
+        }
+
+        $data['unknown']    = Signatures::where('leeftijd', '<', 0)->orWhere('leeftijd', 'geen')->count();
+        $data['adult']      = Signatures::where('leeftijd', '>', 18)->count();
+        $data['youth']      = Signatures::where('leeftijd', '<', 18)->count();
+        $data['signCount']  = Signatures::count();
+        $data['signatures'] = Signatures::where('naam', 'LIKE', "%$term%")->orderBy('naam', 'asc')->paginate(50);
+        return view('signature.index', $data);
     }
 
     /**

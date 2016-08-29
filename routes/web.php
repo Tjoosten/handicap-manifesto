@@ -20,6 +20,7 @@ Route::get('/signature/pdf', 'SignatureController@pdf')->name('signature.pdf');
 
 // Signature backend controllers
 Route::get('/signature/backend', 'SignatureController@index')->name('signature.backend');
+Route::post('/signature/backend/search', 'SignatureController@search')->name('signature.search');
 
 Route::get('/users', 'LoginController@index')->name('users');
 Route::get('/users/update', 'LoginController@edit')->name('profile.edit');
