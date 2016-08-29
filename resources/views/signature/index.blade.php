@@ -15,7 +15,7 @@
 
                 <div class="pull-right">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button @if (count($signatures) == 0) disabled @endif type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Exporteer <span class="caret"></span>
                         </button>
 
