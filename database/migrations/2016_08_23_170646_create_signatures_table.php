@@ -21,6 +21,7 @@ class CreateSignaturesTable extends Migration
             $table->string('naam');
             $table->string('email');
             $table->string('geboortedatum');
+            $table->integer('leeftijd');
             $table->string('stad');
             $table->timestamps();
         });

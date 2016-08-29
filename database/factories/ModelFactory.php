@@ -28,6 +28,7 @@ $factory->define(App\Signatures::class, function (Faker\Generator $faker) {
         'geboortedatum' => $faker->date('Y-m-d'),
         'stad' => $faker->city,
         'email' => $faker->email,
+        'leeftijd' => $faker->numberBetween(0, 70)
     ];
 });
 
