@@ -104,7 +104,7 @@
                                         <input type="text"  value="{{ old('naam') }}" name="naam" class="form-control" placeholder="Uw naam en achternaam">
 
                                         @if($errors->has('naam'))
-                                            <span class="help-block">{{ $errors->first('naam') }}</span>
+                                            <span class="help-block">* {{ $errors->first('naam') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -116,9 +116,13 @@
 
                                                 @for ($int = 1; $int < 32; $int++)
                                                     @if ($int < 10)
-                                                        <option value="0{!! $int !!}">0{!! $int !!}</option>
+                                                        <option value="0{!! $int !!}" @if(old('dag') == '0' . $int) selected @endif>
+                                                            0{!! $int !!}
+                                                        </option>
                                                     @else
-                                                        <option value="{!! $int !!}">{!! $int !!}</option>
+                                                        <option value="{!! $int !!}" @if(old('dag') == $int) selected @endif>
+                                                            {!! $int !!}
+                                                        </option>
                                                     @endif
                                                 @endfor
                                             </select>
@@ -127,18 +131,18 @@
                                         <div style="padding-right:0; padding-left:0;" class="col-md-2 {{ $errors->has('maand') ? 'has-error' : '' }}">
                                             <select name="maand" class="form-control">
                                                 <option value="" selected>- Maand -</option>
-                                                <option value="01">Januari</option>
-                                                <option value="02">Februari</option>
-                                                <option value="03">Maart</option>
-                                                <option value="04">April</option>
-                                                <option value="05">Mei</option>
-                                                <option value="06">Juni</option>
-                                                <option value="07">Juli</option>
-                                                <option value="08">Augustus</option>
-                                                <option value="09">September</option>
-                                                <option value="10">Oktober</option>
-                                                <option value="11">November</option>
-                                                <option value="12">December</option>
+                                                <option value="01" @if(old('maand') == '01') selected @endif>Januari</option>
+                                                <option value="02" @if(old('maand') == '02') selected @endif>Februari</option>
+                                                <option value="03" @if(old('maand') == '03') selected @endif>Maart</option>
+                                                <option value="04" @if(old('maand') == '04') selected @endif>April</option>
+                                                <option value="05" @if(old('maand') == '05') selected @endif>Mei</option>
+                                                <option value="06" @if(old('maand') == '06') selected @endif>Juni</option>
+                                                <option value="07" @if(old('maand') == '07') selected @endif>Juli</option>
+                                                <option value="08" @if(old('maand') == '08') selected @endif>Augustus</option>
+                                                <option value="09" @if(old('maand') == '09') selected @endif>September</option>
+                                                <option value="10" @if(old('maand') == '10') selected @endif>Oktober</option>
+                                                <option value="11" @if(old('maand') == '11') selected @endif>November</option>
+                                                <option value="12" @if(old('maand') == '12') selected @endif>December</option>
                                             </select>
                                         </div>
 
@@ -146,7 +150,9 @@
                                             <select name="jaar" class="form-control">
                                                 <option value="" selected> - Jaar -</option>
                                                 @for ($jaar = 1916; $jaar < 2017; $jaar++)
-                                                    <option value="{!! $jaar !!}">{!! $jaar !!}</option>
+                                                    <option value="{!! $jaar !!}" @if (old('jaar') == $jaar) selected @endif>
+                                                        {!! $jaar !!}
+                                                    </option>
                                                 @endfor
                                             </select>
                                         </div>
@@ -155,7 +161,7 @@
                                             @if ($errors->has('dag') || $errors->has('maand') || $errors->has('jaar'))
                                                 <span class="help-block">
                                                     <ul class="list-unstyled">
-                                                    @if ($errors->has('dag'))
+                                                        @if ($errors->has('dag'))
                                                             <li><span class="text-danger">* {{ $errors->first('dag') }}</span></li>
                                                         @endif
 
@@ -166,7 +172,7 @@
                                                         @if ($errors->has('jaar'))
                                                             <li><span class="text-danger">* {{ $errors->first('jaar') }}</span></li>
                                                         @endif
-                                                </ul>
+                                                    </ul>
                                                 </span>
                                             @else
                                                 <span class="help-block"><i>Geboortedatum</i></span>
@@ -179,7 +185,7 @@
                                         <input type="text" value="{{ old('email') }}" name="email" class="form-control" placeholder="Uw email adres">
 
                                         @if($errors->has('email'))
-                                            <span class="help-block">{{ $errors->first('email') }}</span>
+                                            <span class="help-block">* {{ $errors->first('email') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -189,7 +195,7 @@
                                         <input type="text" value="{{ old('stad') }}" name="stad" class="form-control" placeholder="Uw stad">
 
                                         @if($errors->has('stad'))
-                                            <span class="help-block">{{ $errors->first('stad') }}</span>
+                                            <span class="help-block">* {{ $errors->first('stad') }}</span>
                                         @endif
                                     </div>
                                 </div>

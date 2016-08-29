@@ -4,6 +4,17 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class SignatureValidator
+ * @package App\Http\Requests
+ *
+ * @property mixed naam
+ * @property mixed dag
+ * @property mixed maand
+ * @property mixed jaar
+ * @property mixed email
+ * @property mixed stad
+ */
 class SignatureValidator extends FormRequest
 {
     /**
