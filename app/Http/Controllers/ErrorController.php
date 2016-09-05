@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\ErrorCategory;
 use App\Errors;
 use App\Http\Requests\ErrorValidator;
+use Github\Client;
+use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -63,6 +65,37 @@ class ErrorController extends Controller
     }
 
     /**
+     * Push the error/feedback to github. So developers can handle it.
+     * ------
+     * - No phpunit test needed because the github API works all the time.
+     *
+     * @url:platform  GET|HEAD: /feedback/push/{id}
+     *
+     * @param  int $fid the feedback/error id in the database.
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function pushGithub($fid)
+    {
+        // Github credentails.
+        $username = env('GH_USERNAME');
+        $password = env('GH_PASSWORD');
+
+        // Get the report data:
+        $report = Errors::find($fid);
+
+        // Set the push data:
+        $push['title'] = "Platform issue nr. $report->id";
+        $push['body']  = $report->melding;
+
+        // Github push hook.
+        $github = new Client();
+        $github->authenticate($username, $password, Client::AUTH_HTTP_PASSWORD );
+        $github->api('issue')->create('Tjoosten', 'Handicap-manifesto', $push);
+
+        return redirect()->route('feedback.show', ['id' => $report->id]);
+    }
+
+    /**
      * Get the insert form for a possible error.
      *
      * @url:platform  GET|HEAD: /report
@@ -85,6 +118,9 @@ class ErrorController extends Controller
      */
     public function store(ErrorValidator $input)
     {
+        // TODO: Register the creation handling to the database.
+        // TODO: Register a notification to all the crew members with a login.
+
         $error = Errors::create($input->except(['_token']));
 
         $relation = Errors::find($error->id);

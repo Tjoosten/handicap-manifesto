@@ -59,6 +59,11 @@
                         </li>
                     </ul>
                 </div>
+
+                <div class="btn-group">
+                    <a href="" class="btn btn-default">GitHub Push</a>
+                    <a href="" class="btn btn-default">Sluit ticket</a>
+                </div>
             </div>
         </div>
     </div>
