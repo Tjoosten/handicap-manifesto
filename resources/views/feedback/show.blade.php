@@ -52,6 +52,19 @@
                             Ticket ID: <span class="pull-right"><strong><code>#T{{ $item->id }}</code></strong></span>
                         </li>
                         <li class="list-group-item">
+                            Status:
+
+                            <span class="pull-right">
+                                @if ($item->status === 0)
+                                    {{-- closed --}}
+                                    <span class="text-danger">Gesloten</span>
+                                @elseif ($item->status === 1)
+                                    {{-- open --}}
+                                    <span class="text-success">Open</span>
+                                @endif
+                            </span>
+                        </li>
+                        <li class="list-group-item">
                             Gecreerd op:
 
                             <span class="pull-right">
