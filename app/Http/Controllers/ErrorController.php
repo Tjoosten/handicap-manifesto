@@ -92,6 +92,11 @@ class ErrorController extends Controller
         $github->authenticate($username, $password, Client::AUTH_HTTP_PASSWORD );
         $github->api('issue')->create('Tjoosten', 'Handicap-manifesto', $push);
 
+        if ($github) {
+            session()->flash('class', 'alert alert-success');
+            session()->flash('message', 'Het rapport is doorgestoken naar GitHub');
+        }
+
         return redirect()->route('feedback.show', ['id' => $report->id]);
     }
 

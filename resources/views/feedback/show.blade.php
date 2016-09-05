@@ -3,6 +3,14 @@
 @section('content')
     <div class="container">
         <div class="row">
+            @if (Session::has('class') && Session::has('message'))
+                <div class="col-sm-12">
+                    <div class="{{ Session::get('class') }}">
+                        {{ Session::get('message') }}
+                    </div>
+                </div>
+            @endif
+
             <div class="col-sm-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">Globale info:</div>
