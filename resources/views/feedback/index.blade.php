@@ -50,50 +50,55 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($errors as $error)
-                                    {{-- Set label info --}}
-                                    @if ($error->status === 0)
-                                        <?php
-                                            $labelClass = 'label-danger';
-                                            $labelName  = 'Gesloten';
-                                            $tableClass = 'danger';
-                                        ?>
-                                    @elseif ($error->status === 1)
-                                        <?php
-                                            $labelClass = 'label-success';
-                                            $labelName  = 'Open';
-                                            $tableClass = 'success'
-                                        ?>
-                                    @endif
-                                    {{-- /Set label info --}}
+                                    @foreach ($errors as $error)
+                                        {{-- Set label info --}}
+                                        @if ($error->status === 0)
+                                            <?php
+                                                $labelClass = 'label-danger';
+                                                $labelName  = 'Gesloten';
+                                                $tableClass = 'danger';
+                                            ?>
+                                        @elseif ($error->status === 1)
+                                            <?php
+                                                $labelClass = 'label-success';
+                                                $labelName  = 'Open';
+                                                $tableClass = 'success'
+                                            ?>
+                                        @endif
+                                        {{-- /Set label info --}}
 
-                                    <tr class="{{ $tableClass }}">
-                                        <td><code>#T{!! $error->id !!}</code></td>
-                                        <td>{!! $error->naam !!}</td>
-                                        <td>{!! $error->email !!}</td>
-                                        <td><span class="label label-info">{!! $error->category->categorie !!}</span></td>
+                                        <tr class="{{ $tableClass }}">
+                                            <td><code>#T{!! $error->id !!}</code></td>
+                                            <td>{!! $error->naam !!}</td>
+                                            <td>{!! $error->email !!}</td>
+                                            <td><span class="label label-info">{!! $error->category->categorie !!}</span></td>
 
-                                        <td>
-                                            <span class="label {{ $labelClass }}"> {{ $labelName }} </span>
-                                        </td>
+                                            <td>
+                                                <span class="label {{ $labelClass }}"> {{ $labelName }} </span>
+                                            </td>
 
-                                        <td> {!! $error->created_at !!}</td>
+                                            <td> {!! $error->created_at !!}</td>
 
-                                        {{-- Functions --}}
-                                        <td>
-                                            <a href="{{ route('feedback.show', ['id' => $error->id]) }}" class="label label-info">Bekijken</a>
+                                            {{-- Functions --}}
+                                            <td>
+                                                <a href="{{ route('feedback.show', ['id' => $error->id]) }}" class="label label-info">Bekijken</a>
 
-                                            @if ($error->status === 1)
-                                                <a href="{{ route('feedback.status', ['fid' => $error->id, 'status' => 'close']) }}" class="label label-danger">Sluiten</a>
-                                            @elseif ($error->status === 0)
-                                                <a href="{{ route('feedback.status', ['fid' => $error->id, 'status' => 'open']) }}" class="label label-danger">Heropenen</a>
-                                            @endif
-                                        </td>
-                                        {{-- /End functions --}}
-                                    </tr>
-                                @endforeach
+                                                @if ($error->status === 1)
+                                                    <a href="{{ route('feedback.status', ['fid' => $error->id, 'status' => 'close']) }}" class="label label-danger">Sluiten</a>
+                                                @elseif ($error->status === 0)
+                                                    <a href="{{ route('feedback.status', ['fid' => $error->id, 'status' => 'open']) }}" class="label label-danger">Heropenen</a>
+                                                @endif
+                                            </td>
+                                            {{-- /End functions --}}
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
+
+                            @if (count($errors) > 15)
+                                {{-- Pagination --}}
+                                {!! $errors->render() !!}
+                            @endif
                         </div>
                     </div>
                 @endif
