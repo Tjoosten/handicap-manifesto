@@ -7,6 +7,9 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * Class ErrorValidator
  * @package App\Http\Requests
+ *
+ * @property mixed categorie
+ * @property mixed melding
  */
 class ErrorValidator extends FormRequest
 {

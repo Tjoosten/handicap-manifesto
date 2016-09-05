@@ -15,7 +15,7 @@ class Errors extends Model
      *
      * @var array
      */
-    protected $fillable = ['naam', 'email', 'melding', 'categorie'];
+    protected $fillable = ['naam', 'email', 'melding', 'categorie', 'status'];
 
     /**
      * Category relation.
@@ -24,7 +24,7 @@ class Errors extends Model
      */
     public function category()
     {
-        return $this->belongsTo('App\ErrorCategory', 'id', 'categorie');
+        return $this->belongsTo('App\ErrorCategory', 'categorie', 'id');
     }
 
     /**
