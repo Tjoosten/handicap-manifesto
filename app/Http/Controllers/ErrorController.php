@@ -29,6 +29,18 @@ class ErrorController extends Controller
     }
 
     /**
+     * Get the insert form for a possible error.
+     *
+     * @url:platform
+     * @see:phpunit
+     */
+    public function register()
+    {
+        $data['statusses'] = ErrorCategory::all();
+        return view('issue.new', $data);
+    }
+
+    /**
      * Store the problem report in the database.
      *
      * @url:platform
@@ -62,17 +74,5 @@ class ErrorController extends Controller
     public function status()
     {
         return redirect()->back();
-    }
-
-    /**
-     * Get the insert form for a possible error.
-     *
-     * @url:platform
-     * @see:phpunit
-     */
-    public function register()
-    {
-        $data['statusses'] = ErrorCategory::all();
-        return view('issue.new', $data);
     }
 }
