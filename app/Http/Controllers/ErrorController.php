@@ -16,6 +16,14 @@ use App\Http\Requests;
 class ErrorController extends Controller
 {
     /**
+     * ErrorController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['register', 'store']]);
+    }
+
+    /**
      * Backend overview off the possible errors.
      *
      * @url:platform
