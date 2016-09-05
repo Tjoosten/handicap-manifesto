@@ -19,8 +19,8 @@
 
                 {{-- export & new item button --}}
                 <div class="pull-right" style="margin-bottom: 15px;">
-                    <a href="" class="btn btn-success">Nieuw ticket</a>
-                    <a href="" class="btn btn-default">Exporteren</a>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newTicket">Nieuw ticket</button>
+                    {{--  <a href="" class="btn btn-default">Exporteren</a> --}}
                 </div>
                 {{-- /export & new item button --}}
             </div>
@@ -104,6 +104,10 @@
                 @endif
             </div>
             {{-- /content --}}
+
+            {{-- Partials --}}
+            @include('feedback.partials.store-modal')
+            {{-- /Partials --}}
         </div>
     </div>
 @endsection

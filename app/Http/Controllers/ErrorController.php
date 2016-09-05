@@ -37,8 +37,9 @@ class ErrorController extends Controller
      */
     public function index()
     {
-        $dbRelations    = ['category', 'label'];
-        $data['errors'] = Errors::with($dbRelations)->paginate(15);
+        $dbRelations        = ['category', 'label'];
+        $data['errors']     = Errors::with($dbRelations)->paginate(15);
+        $data['categories'] = ErrorCategory::all();
 
         //dd($data['errors']);
 
@@ -131,9 +132,16 @@ class ErrorController extends Controller
         // 1 = Open
         // 0 = closed
 
-        $error  = Errors::create($input->except(['_token']));
-        $status = Errors::find($error->id)->update(['status' => 1]);
+        // Notification.
+        // ------
+        // ! auth()->check()  = User is not logged in.
+        // auth()->check()    = User is logged in.
+        if (auth()->check()) {
+            //
+        }
 
+        $error  = Errors::create($input->except('_token'));
+        $status = Errors::find($error->id)->update(['status' => 1]);
 
         $relation = Errors::find($error->id);
         $relation->label()->associate(1);
@@ -153,12 +161,14 @@ class ErrorController extends Controller
      * @url:platform  GET|HEAD: /feedback/{status}/{fid}
      * @see:phpunit   TODO: Write phpunit test
      *
-     * @param  int $fid the feedback ticket id in the database.
+     * @param  int    $fid    The feedback ticket id in the database.
      * @param  string $status Status for the ticket. Closed or open.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function status($status, $fid)
     {
+        // TODO: Notification that a crew member changed the fedback status.
+
         // Ticket Statuses:
         // ------
         // 1 = Open
