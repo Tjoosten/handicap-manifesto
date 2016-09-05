@@ -25,7 +25,11 @@ class ErrorController extends Controller
      */
     public function index()
     {
-        $data['errors'] = Errors::paginate(15);
+        $dbRelations = ['category', 'label'];
+        $data['errors'] = Errors::with($dbRelations)->paginate(15);
+
+        //dd($data['errors']);
+
         return view('feedback.index', $data);
     }
 
