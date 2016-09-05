@@ -17,6 +17,8 @@ class ErrorController extends Controller
 {
     /**
      * ErrorController constructor.
+     *
+     * Auth: Used for the authencation registered routes.
      */
     public function __construct()
     {
@@ -26,8 +28,8 @@ class ErrorController extends Controller
     /**
      * Backend overview off the possible errors.
      *
-     * @url:platform
-     * @see:phpunit
+     * @url:platform  GET|HEAD: /feedback
+     * @see:phpunit   TODO: write test
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -42,10 +44,24 @@ class ErrorController extends Controller
     }
 
     /**
+     * Show a specific feedback/Error ticket.
+     *
+     * @url:platform  GET|HEAD:
+     * @see:phpunit   TODO Write test
+     *
+     * @param  int $fid the feedback/error id in the database.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($fid)
+    {
+        return view('feedback.show');
+    }
+
+    /**
      * Get the insert form for a possible error.
      *
-     * @url:platform
-     * @see:phpunit
+     * @url:platform  GET|HEAD: /report
+     * @see:phpunit   TODO: write test
      */
     public function register()
     {
@@ -56,7 +72,7 @@ class ErrorController extends Controller
     /**
      * Store the problem report in the database.
      *
-     * @url:platform
+     * @url:platform  POST: /report
      * @see:phpunit   TODO: Need to write.
      *
      * @param  ErrorValidator $input
