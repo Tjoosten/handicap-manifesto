@@ -18,6 +18,15 @@
 
 <h3 align="center">Petitie: Een eerlijk statuut voor personen met een handicap.</h3>
 
+<p>
+    Dit is een petitie is georganiseerd door Tom Manhaeghe. En draagt hier ook ineens de verantwoordelijkheid voor.
+    Elk vol blad kan ingescand worden om vervolgens per mail op te sturen naar het email adres.
+</p>
+
+<p>
+    - petities@myhomeplace.be
+</p>
+
 <table>
     <thead>
         <tr>

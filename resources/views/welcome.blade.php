@@ -11,10 +11,20 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <style>
+        <style type="text/css">
 
             .margin {
                 margin-top: 30px;
+            }
+
+            .form-control::-moz-placeholder {
+                color: #7b858a;
+            }
+            .form-control:-ms-input-placeholder {
+                color: #7b858a;
+            }
+            .form-control::-webkit-input-placeholder {
+                color: #7b858a;
             }
         </style>
 
@@ -45,6 +55,8 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a class="label label-info" href="{{ asset('document.pdf') }}">Printbare versie</a>
+                            <a class="label label-info" href="{{ asset('uitleg.pdf') }}">PDF: petitie uitleg</a>
+                            <a class="label label-danger" href="{{ route('report') }}">Meld een probleem</a>
                             <div class="pull-right">
                                 <div class="fb-share-button" data-href="https://manifesto.idevelopment.be" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanifesto.idevelopment.be%2F&amp;src=sdkpreparse">Delen</a></div>
                             </div>
@@ -89,40 +101,101 @@
 
                                 <div class="form-group {{ $errors->has('naam') ? 'has-error' : '' }}">
                                     <div class="col-md-4">
-                                        <input type="text" name="naam" class="form-control" placeholder="Uw naam en achternaam">
+                                        <input type="text"  value="{{ old('naam') }}" name="naam" class="form-control" placeholder="Uw naam en achternaam">
 
                                         @if($errors->has('naam'))
-                                            <span class="help-block">{{ $errors->first('naam') }}</span>
+                                            <span class="help-block">* {{ $errors->first('naam') }}</span>
                                         @endif
                                     </div>
                                 </div>
 
                                 <div class="form-group {{ $errors->has('geboortedatum') ? 'has-error' : '' }}">
-                                    <div class="col-md-4">
-                                        <input type="text" name="geboortedatum" class="form-control" placeholder="Uw geboortedatum">
+                                        <div class="col-md-2 {{ $errors->has('dag') ? 'has-error' : '' }}">
+                                            <select name="dag" class="form-control">
+                                                <option value="">- Dag -</option>
 
-                                        @if($errors->has('geboortedatum'))
-                                            <span class="help-block">{{ $errors->first('geboortedatum') }}</span>
-                                        @endif
-                                    </div>
+                                                @for ($int = 1; $int < 32; $int++)
+                                                    @if ($int < 10)
+                                                        <option value="0{!! $int !!}" @if(old('dag') == '0' . $int) selected @endif>
+                                                            0{!! $int !!}
+                                                        </option>
+                                                    @else
+                                                        <option value="{!! $int !!}" @if(old('dag') == $int) selected @endif>
+                                                            {!! $int !!}
+                                                        </option>
+                                                    @endif
+                                                @endfor
+                                            </select>
+                                        </div>
+
+                                        <div style="padding-right:0; padding-left:0;" class="col-md-2 {{ $errors->has('maand') ? 'has-error' : '' }}">
+                                            <select name="maand" class="form-control">
+                                                <option value="" selected>- Maand -</option>
+                                                <option value="01" @if(old('maand') == '01') selected @endif>Januari</option>
+                                                <option value="02" @if(old('maand') == '02') selected @endif>Februari</option>
+                                                <option value="03" @if(old('maand') == '03') selected @endif>Maart</option>
+                                                <option value="04" @if(old('maand') == '04') selected @endif>April</option>
+                                                <option value="05" @if(old('maand') == '05') selected @endif>Mei</option>
+                                                <option value="06" @if(old('maand') == '06') selected @endif>Juni</option>
+                                                <option value="07" @if(old('maand') == '07') selected @endif>Juli</option>
+                                                <option value="08" @if(old('maand') == '08') selected @endif>Augustus</option>
+                                                <option value="09" @if(old('maand') == '09') selected @endif>September</option>
+                                                <option value="10" @if(old('maand') == '10') selected @endif>Oktober</option>
+                                                <option value="11" @if(old('maand') == '11') selected @endif>November</option>
+                                                <option value="12" @if(old('maand') == '12') selected @endif>December</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-2 {{ $errors->has('jaar') ? 'has-error' : '' }}">
+                                            <select name="jaar" class="form-control">
+                                                <option value="" selected> - Jaar -</option>
+                                                @for ($jaar = 1916; $jaar < 2017; $jaar++)
+                                                    <option value="{!! $jaar !!}" @if (old('jaar') == $jaar) selected @endif>
+                                                        {!! $jaar !!}
+                                                    </option>
+                                                @endfor
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            @if ($errors->has('dag') || $errors->has('maand') || $errors->has('jaar'))
+                                                <span class="help-block">
+                                                    <ul class="list-unstyled">
+                                                        @if ($errors->has('dag'))
+                                                            <li><span class="text-danger">* {{ $errors->first('dag') }}</span></li>
+                                                        @endif
+
+                                                        @if ($errors->has('maand'))
+                                                            <li><span class="text-danger">* {{ $errors->first('maand') }}</span></li>
+                                                        @endif
+
+                                                        @if ($errors->has('jaar'))
+                                                            <li><span class="text-danger">* {{ $errors->first('jaar') }}</span></li>
+                                                        @endif
+                                                    </ul>
+                                                </span>
+                                            @else
+                                                <span class="help-block"><i>Geboortedatum</i></span>
+                                            @endif
+                                        </div>
                                 </div>
 
                                 <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                                     <div class="col-md-6">
-                                        <input type="text" name="email" class="form-control" placeholder="Uw email adres">
+                                        <input type="text" value="{{ old('email') }}" name="email" class="form-control" placeholder="Uw email adres">
 
                                         @if($errors->has('email'))
-                                            <span class="help-block">{{ $errors->first('email') }}</span>
+                                            <span class="help-block">* {{ $errors->first('email') }}</span>
                                         @endif
                                     </div>
                                 </div>
 
                                 <div class="form-group {{ $errors->has('stad') ? 'has-error' : '' }}">
                                     <div class="col-md-6">
-                                        <input type="text" name="stad" class="form-control" placeholder="Uw stad">
+                                        <input type="text" value="{{ old('stad') }}" name="stad" class="form-control" placeholder="Uw stad">
 
                                         @if($errors->has('stad'))
-                                            <span class="help-block">{{ $errors->first('stad') }}</span>
+                                            <span class="help-block">* {{ $errors->first('stad') }}</span>
                                         @endif
                                     </div>
                                 </div>

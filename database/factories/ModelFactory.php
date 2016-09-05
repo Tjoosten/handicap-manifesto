@@ -28,5 +28,31 @@ $factory->define(App\Signatures::class, function (Faker\Generator $faker) {
         'geboortedatum' => $faker->date('Y-m-d'),
         'stad' => $faker->city,
         'email' => $faker->email,
+        'leeftijd' => $faker->numberBetween(0, 70)
+    ];
+});
+
+$factory->define(App\Statistics::class, function (Faker\Generator $faker) {
+    return [
+        'route' => $faker->url,
+        'ip_address' => $faker->ipv4,
+    ];
+});
+
+$factory->define(App\ErrorCategory::class, function (Faker\Generator $faker) {
+    return [
+        //
+    ];
+});
+
+$factory->define(App\Errors::class, function (Faker\Generator $faker) {
+    return [
+      //
+    ];
+});
+
+$factory->define(App\ErrorStatus::class, function (Faker\Generator $faker) {
+    return [
+        //
     ];
 });
