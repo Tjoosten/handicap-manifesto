@@ -61,7 +61,7 @@
 
                                         {{-- Functions --}}
                                         <td>
-                                            <a href="" class="label label-info">Bekijken</a>
+                                            <a href="{{ route('feedback.show', ['id' => $error->id]) }}" class="label label-info">Bekijken</a>
                                             <a href="" class="label label-danger">Sluiten</a>
                                         </td>
                                         {{-- /End functions --}}

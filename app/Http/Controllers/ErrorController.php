@@ -35,7 +35,7 @@ class ErrorController extends Controller
      */
     public function index()
     {
-        $dbRelations = ['category', 'label'];
+        $dbRelations    = ['category', 'label'];
         $data['errors'] = Errors::with($dbRelations)->paginate(15);
 
         //dd($data['errors']);
@@ -46,7 +46,7 @@ class ErrorController extends Controller
     /**
      * Show a specific feedback/Error ticket.
      *
-     * @url:platform  GET|HEAD:
+     * @url:platform  GET|HEAD: /feedback/{id}
      * @see:phpunit   TODO Write test
      *
      * @param  int $fid the feedback/error id in the database.
@@ -54,7 +54,12 @@ class ErrorController extends Controller
      */
     public function show($fid)
     {
-        return view('feedback.show');
+        $dbRelations  = ['category', 'label'];
+        $data['item'] = Errors::with($dbRelations)->find($fid);
+
+        //dd($data['item']);
+
+        return view('feedback.show', $data);
     }
 
     /**

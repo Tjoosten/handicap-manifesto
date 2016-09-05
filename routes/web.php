@@ -38,5 +38,6 @@ Route::post('/report', 'ErrorController@store')->name('report.store');
 
 // Feedback routes
 Route::get('/feedback', 'ErrorController@index')->name('feedback.backend');
+Route::get('/feedback/{id}', 'ErrorController@show')->name('feedback.show');
 
 Route::get('/backend', 'BackendController@index')->name('backend');
