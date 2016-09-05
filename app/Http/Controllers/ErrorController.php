@@ -126,14 +126,23 @@ class ErrorController extends Controller
         // TODO: Register the creation handling to the database.
         // TODO: Register a notification to all the crew members with a login.
 
-        $error = Errors::create($input->except(['_token']));
+        // Ticket Statuses:
+        // ------
+        // 1 = Open
+        // 0 = closed
+
+        $error  = Errors::create($input->except(['_token']));
+        $status = Errors::find($error->id)->update(['status' => 1]);
+
 
         $relation = Errors::find($error->id);
         $relation->label()->associate(1);
         $relation->category()->associate($input->categorie);
 
-        session()->flash('class', 'alert alert-success');
-        session()->flash('message', 'Jouw feedback is opgeslagen en word snel behandelt.');
+        if ($error && $status) {
+            session()->flash('class', 'alert alert-success');
+            session()->flash('message', 'Jouw feedback is opgeslagen en word snel behandelt.');
+        }
 
         return redirect()->back();
     }
@@ -141,13 +150,38 @@ class ErrorController extends Controller
     /**
      * Change the status for the issue report.
      *
-     * @url:platform
-     * @see:phpunit
+     * @url:platform  GET|HEAD: /feedback/{status}/{fid}
+     * @see:phpunit   TODO: Write phpunit test
      *
+     * @param  int $fid the feedback ticket id in the database.
+     * @param  string $status Status for the ticket. Closed or open.
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function status()
+    public function status($status, $fid)
     {
+        // Ticket Statuses:
+        // ------
+        // 1 = Open
+        // 0 = closed
+
+        if($status == 'open') {
+            $class   = 'alert alert-success';
+            $message = 'het ticket heeft nu de status "Open"';
+
+            Errors::find($fid)->update(['status' => 1]);
+        } elseif ($status = 'close') {
+            $class   = 'alert alert-success';
+            $message = 'het ticket heeft nu de status "Gesloten"';
+
+            Errors::find($fid)->update(['status' => 0]);
+        } else {
+            $class   = 'alert alert-danger';
+            $message = 'Invalide parameter. ';
+        }
+
+        session()->flash('class', $class);
+        session()->flash('message', $message);
+
         return redirect()->back();
     }
 }

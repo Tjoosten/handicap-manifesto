@@ -40,5 +40,6 @@ Route::post('/report', 'ErrorController@store')->name('report.store');
 Route::get('/feedback', 'ErrorController@index')->name('feedback.backend');
 Route::get('/feedback/{id}', 'ErrorController@show')->name('feedback.show');
 Route::get('/feedback/push/{id}', 'ErrorController@pushGithub')->name('feedback.push');
+Route::get('/feedback/{status}/{fid}', 'ErrorController@status')->name('feedback.status');
 
 Route::get('/backend', 'BackendController@index')->name('backend');

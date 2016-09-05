@@ -69,8 +69,13 @@
                 </div>
 
                 <div class="btn-group">
-                    <a href="" class="btn btn-default">GitHub Push</a>
-                    <a href="" class="btn btn-default">Sluit ticket</a>
+                    <a href="{{ route('feedback.push', ['id' => $item->id]) }}" class="btn btn-default">GitHub Push</a>
+
+                    @if ($item->status === 1)
+                        <a href="{{ route('feedback.status', ['fid' => $item->id, 'status' => 'close']) }}" class="btn btn-danger">Sluiten</a>
+                    @elseif ($item->status === 0)
+                        <a href="{{ route('feedback.status', ['fid' => $item->id, 'status' => 'open']) }}" class="btn btn-success">Heropenen</a>
+                    @endif
                 </div>
             </div>
         </div>

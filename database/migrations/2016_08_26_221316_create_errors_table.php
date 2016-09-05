@@ -15,7 +15,7 @@ class CreateErrorsTable extends Migration
     {
         Schema::create('errors', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('status');
+            $table->integer('status')->nullable();
             $table->integer('categorie');
             $table->string('email');
             $table->string('naam');
