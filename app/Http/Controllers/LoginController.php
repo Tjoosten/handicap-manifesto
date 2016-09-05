@@ -74,14 +74,6 @@ class LoginController extends Controller
             return redirect()->back()->withErrors($infoValidator)->withInput();
         }
 
-        $passValidator = Validator::make($request->all(), [
-            'password' => 'required|min:6|confirmed',
-        ]);
-
-        if ($passValidator->fails()) {
-            return redirect()->back()->withErrors($passValidator);
-        }
-
         $user   = auth()->user();
         $filter = ['_token', 'password_confirmation'];
 

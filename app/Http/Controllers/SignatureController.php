@@ -88,7 +88,7 @@ class SignatureController extends Controller
             'geboortedatum' => $birth,
             'email'         => $input->email,
             'stad'          => $input->stad,
-            'leeftijd'      => $current->diffInYears(Carbon::parse($birth))
+            'leeftijd'      => 0 // Disable. reason: errors in the production server.
         ]);
 
         $message = 'Bedankt om de petitie te ondertekenen.';
