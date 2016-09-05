@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\QuoteValidator;
+use App\Quotes;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -24,7 +25,7 @@ class QuoteController extends Controller
     /**
      * Get the register view for a quote.
      *
-     * @url:platform  GET|HEAD:
+     * @url:platform  GET|HEAD: /quotes
      * @see:phpunit   TODO: Write test for it.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -37,10 +38,22 @@ class QuoteController extends Controller
     /**
      * Insert a new quote method.
      *
-     * @param QuoteValidator $input
+     * @url:platform   POST: /quotes/insert
+     * @see:phpunit    QuotesTest::testInsertWithValidationErrors()
+     * @see:phpunit    QuotesTest::testInsertWithoutValidationErrors()
+     *
+     * @param  QuoteValidator $input
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(QuoteValidator $input)
     {
-        //
+        $insert = Quotes::create($input->except('_token'));
+
+        if ($insert) {
+            session()->flash('class', 'alert alert-success');
+            session()->flash('message', 'Uw getuigenis is succesvol opgeslagen.');
+        }
+
+        return redirect()->back(302);
     }
 }
