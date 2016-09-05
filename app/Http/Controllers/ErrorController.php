@@ -75,17 +75,4 @@ class ErrorController extends Controller
         $data['statusses'] = ErrorCategory::all();
         return view('issue.new', $data);
     }
-
-    /**
-     * Let the client report a possible error.
-     *
-     * @url:platform
-     * @see:phpunit
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function report()
-    {
-        return redirect()->back();
-    }
 }
