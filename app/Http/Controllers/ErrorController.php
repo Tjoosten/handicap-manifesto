@@ -25,7 +25,8 @@ class ErrorController extends Controller
      */
     public function index()
     {
-        return view('');
+        $data['errors'] = Errors::paginate(15);
+        return view('feedback.index', $data);
     }
 
     /**
