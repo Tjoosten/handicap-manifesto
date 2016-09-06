@@ -180,7 +180,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        Laravelista\Ekko\EkkoServiceProvider::class
     ],
 
     /*
@@ -231,6 +231,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'GitHub' => GrahamCampbell\GitHub\Facades\GitHub::class,
+        'Ekko' => Laravelista\Ekko\Facades\Ekko::class,
     ],
 
 ];

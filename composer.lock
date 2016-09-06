@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e586a385d167db6caca7425356adc23b",
-    "content-hash": "f45ecde7196ed4ec13489b9e559e758b",
+    "hash": "f77c8855ff68ed102f4d4140fc49b2ac",
+    "content-hash": "50475a244641aa44ac119ecc01a10346",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -908,6 +908,54 @@
                 "laravel"
             ],
             "time": "2016-09-01 14:06:47"
+        },
+        {
+            "name": "laravelista/ekko",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravelista/Ekko.git",
+                "reference": "8355f9efdba816443a39d5fd3cf396fec30b26d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravelista/Ekko/zipball/8355f9efdba816443a39d5fd3cf396fec30b26d3",
+                "reference": "8355f9efdba816443a39d5fd3cf396fec30b26d3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "~4.0|~5.0",
+                "illuminate/support": "~4.0|~5.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Laravelista\\Ekko\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mario Bašić",
+                    "email": "mario.basic@outlook.com"
+                }
+            ],
+            "description": "Laravel helper for detecting active navigation menu items and applying bootstrap classes.",
+            "keywords": [
+                "bootstrap",
+                "helper",
+                "laravel",
+                "navigation"
+            ],
+            "time": "2016-04-23 21:46:15"
         },
         {
             "name": "league/flysystem",
