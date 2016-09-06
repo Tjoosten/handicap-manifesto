@@ -40,19 +40,22 @@ $factory->define(App\Statistics::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\ErrorCategory::class, function (Faker\Generator $faker) {
-    return [
-        //
-    ];
+    return ['categorie' => $faker->name];
 });
 
 $factory->define(App\Errors::class, function (Faker\Generator $faker) {
     return [
-      //
+        'status' => $faker->numberBetween(0, 1),
+        'categorie' => $faker->name,
+        'email' => $faker->email,
+        'naam' => $faker->name,
+        'melding' => $faker->paragraphs(1)
     ];
 });
 
 $factory->define(App\ErrorStatus::class, function (Faker\Generator $faker) {
     return [
-        //
+        'name' => $faker->name,
+        'description' => $faker->paragraphs(1),
     ];
 });
