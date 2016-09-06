@@ -91,7 +91,7 @@
                             Petitie tekenen:
 
                             <div class="pull-right">
-                                {{ $signatures }}/<strong>100.000 Handtekeningen</strong>
+                                {{ $signatures }}/<strong>{!! Config::get('manifesto.counter') !!} Handtekeningen</strong>
                             </div>
                         </div>
                         <div class="panel-body">

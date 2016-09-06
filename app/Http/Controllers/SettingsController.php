@@ -39,6 +39,9 @@ class SettingsController extends Controller
         $data['MonthlyBackups']    = Config::get('laravel-backup.cleanup.defaultStrategy.keepMonthlyBackupsForMonths');
         $data['KeepYearlyBackups'] = Config::get('laravel-backup.cleanup.defaultStrategy.keepYearlyBackupsForYears');
 
+        // Applicatie settings.
+        $data['signatures'] = Config::get('manifesto.counter');
+
         return view('settings.index', $data);
     }
 
@@ -67,6 +70,35 @@ class SettingsController extends Controller
             session()->flash('message', 'The backup settings could not be updated.');
             session()->flash('class', 'alert-danger');
         }
+
+        return redirect()->back();
+    }
+
+    /**
+     * Update the application settings.
+     *
+     * @url:platform  POST: /settings/application
+     * @see:phpunit   TODO: create test when validation passes -> phpunit
+     * @see:phpunit   TODO: create test when validation fails  -> phpunit.
+     *
+     * @param  Requests\ApplicationSettingValidator $input
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function storeApplication(Requests\ApplicationSettingValidator $input)
+    {
+        $config = new Repository('manifesto');
+        $config->set('counter', $input->counter);
+
+        if ($config->save()) {
+            $class   = 'alert alert-sucess';
+            $message = 'Applicatie configuratie is aangepast.';
+        } else {
+            $class   = 'alert alert-danger';
+            $message = 'Wij konden de applicatie configuratie niet aanpassen.';
+        }
+
+        session()->flash('class', $class);
+        session()->flash('message', $message);
 
         return redirect()->back();
     }
