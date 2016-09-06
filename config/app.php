@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost:8000'),
 
     /*
     |--------------------------------------------------------------------------
@@ -171,6 +171,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         GrahamCampbell\GitHub\GitHubServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        Spatie\LinkChecker\LinkCheckerServiceProvider::class,
 
         /*
          * Application Service Providers...

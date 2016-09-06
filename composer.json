@@ -15,7 +15,8 @@
         "graham-campbell/github": "^4.4",
         "spatie/laravel-backup": "^3.10",
         "larapack/config-writer": "^1.0",
-        "laravelista/ekko": "^1.2"
+        "laravelista/ekko": "^1.2",
+        "spatie/laravel-link-checker": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
