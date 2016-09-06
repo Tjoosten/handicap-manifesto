@@ -22,6 +22,16 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Quotes::class, function (Faker\Generator $faker) {
+    return [
+        'email' => $faker->email,
+        'name' => $faker->name,
+        'birth_date' => $faker->date('Y-m-d'),
+        'quote' => $faker->sentences(3),
+        'publish' => $faker->numberBetween(1, 2)
+    ];
+});
+
 $factory->define(App\Signatures::class, function (Faker\Generator $faker) {
     return [
         'naam' => $faker->name,
@@ -41,18 +51,18 @@ $factory->define(App\Statistics::class, function (Faker\Generator $faker) {
 
 $factory->define(App\ErrorCategory::class, function (Faker\Generator $faker) {
     return [
-        //
+        // TODO: Write array
     ];
 });
 
 $factory->define(App\Errors::class, function (Faker\Generator $faker) {
     return [
-      //
+      // TODO: Write array
     ];
 });
 
 $factory->define(App\ErrorStatus::class, function (Faker\Generator $faker) {
     return [
-        //
+        // TODO: Write array
     ];
 });
