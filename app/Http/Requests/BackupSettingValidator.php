@@ -4,14 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class ErrorValidator
- * @package App\Http\Requests
- *
- * @property mixed categorie
- * @property mixed melding
- */
-class ErrorValidator extends FormRequest
+class BackupSettingValidator extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,10 +24,12 @@ class ErrorValidator extends FormRequest
     public function rules()
     {
         return [
-            'naam' => 'required',
-            'email' => 'required|email',
-            'categorie' => 'required',
-            'melding' => 'required'
+            'database'                   => 'required',
+            'keepAllBackupsForDaysAll'   => 'required|integer',
+            'keepAllBackupsForDays'      => 'required|integer',
+            'keepWeeklyBackupsForWeeks'  => 'required|integer',
+            'keepMonthlyBackupsForWeeks' => 'required|integer',
+            'keepAllBackupsYearly'       => 'required|integer',
         ];
     }
 }
