@@ -2,7 +2,7 @@
     <div class="panel-heading">Database Instellingen:</div>
 
     <div class="panel-body">
-        <form action="" method="POST" class="form-horizontal">
+        <form action="{{ route('settings.backup') }}" method="POST" class="form-horizontal">
             {{-- CSRF Token --}}
             {{ csrf_field() }}
 

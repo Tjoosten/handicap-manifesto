@@ -37,7 +37,8 @@ Route::get('/report', 'ErrorController@register')->name('report');
 Route::post('/report', 'ErrorController@store')->name('report.store');
 
 // Settings
-Route::get('/settings', 'SettingsController@index')->name('feedback.index');
+Route::get('/settings', 'SettingsController@index')->name('settings.index');
+Route::post('/settings/backup', 'SettingsController@storeBackup')->name('settings.backup');
 
 // Feedback routes
 Route::get('/feedback', 'ErrorController@index')->name('feedback.backend');

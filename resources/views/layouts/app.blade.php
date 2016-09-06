@@ -47,7 +47,7 @@
                     <li><a href="{{ route('signature.backend') }}">Handtekeningen</a></li>
                     <li><a href="{{ route('users') }}">Login beheer</a></li>
                     <li><a href="{{ route('feedback.backend') }}">Feedback</a></li>
-                    <li><a href="">Instellingen</a></li>
+                    <li><a href="{{ route('settings.index') }}">Instellingen</a></li>
                 </ul>
 
                 {{-- Right Side Of Navbar --}}
