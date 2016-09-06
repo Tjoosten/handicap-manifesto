@@ -36,6 +36,10 @@ Route::get('/export/excel/2007', 'SignatureController@exportExcel2007')->name('e
 Route::get('/report', 'ErrorController@register')->name('report');
 Route::post('/report', 'ErrorController@store')->name('report.store');
 
+// Settings
+Route::get('/settings', 'SettingsController@index')->name('settings.index');
+Route::post('/settings/backup', 'SettingsController@storeBackup')->name('settings.backup');
+
 // Feedback routes
 Route::get('/feedback', 'ErrorController@index')->name('feedback.backend');
 Route::get('/feedback/{id}', 'ErrorController@show')->name('feedback.show');
