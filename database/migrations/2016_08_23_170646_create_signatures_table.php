@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateSignaturesTable
+ * Class CreateSignaturesTable.
  */
 class CreateSignaturesTable extends Migration
 {
@@ -21,6 +21,7 @@ class CreateSignaturesTable extends Migration
             $table->string('naam');
             $table->string('email');
             $table->string('geboortedatum');
+            $table->integer('leeftijd');
             $table->string('stad');
             $table->timestamps();
         });

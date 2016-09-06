@@ -5,8 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Signatures
- * @package App
+ * Class Signatures.
  */
 class Signatures extends Model
 {
@@ -15,5 +14,5 @@ class Signatures extends Model
      *
      * @var array
      */
-    protected $fillable = ['naam', 'geboortedatum', 'stad', 'email'];
+    protected $fillable = ['naam', 'geboortedatum', 'stad', 'email', 'leeftijd'];
 }

@@ -5,16 +5,70 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SignatureValidator;
 use App\Signatures;
 use Barryvdh\DomPDF\PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
-use App\Http\Requests;
 
 /**
- * Class SignatureController
- * @package App\Http\Controllers
+ * Class SignatureController.
  */
 class SignatureController extends Controller
 {
+    /**
+     * SignatureController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['insert', 'pdf']]);
+    }
+
+    /**
+     * Get all the signatures in the index.
+     *
+     * @url:platform  GET|HEAD:
+     * @see:phpunit   TODO: Build up the test.
+     *
+     * @param  Signatures $sign
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(Signatures $sign)
+    {
+        $data['unknown']    = $sign->where('leeftijd', '<', 0)->orWhere('leeftijd', 'geen')->count();
+        $data['adult']      = $sign->where('leeftijd', '>', 18)->count();
+        $data['youth']      = $sign->where('leeftijd', '<', 18)->count();
+        $data['signCount']  = $sign->count();
+        $data['signatures'] = $sign->paginate(50);
+
+        return view('signature.index', $data);
+    }
+
+    /**
+     * Search a signature in the database.
+     *
+     * @url:platform  GET|HEAD:
+     * @see:phpunit   TODO: Build up the test.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $term = $request->get('name');
+
+        if (empty($term)) {
+            return redirect()->back(302);
+        }
+
+        $data['unknown']    = Signatures::where('leeftijd', '<', 0)->orWhere('leeftijd', 'geen')->count();
+        $data['adult']      = Signatures::where('leeftijd', '>', 18)->count();
+        $data['youth']      = Signatures::where('leeftijd', '<', 18)->count();
+        $data['signCount']  = Signatures::count();
+        $data['signatures'] = Signatures::where('naam', 'LIKE', "%$term%")->orderBy('naam', 'asc')->paginate(50);
+        
+        return view('signature.index', $data);
+    }
+
     /**
      * Insert a new signature.
      *
@@ -26,15 +80,19 @@ class SignatureController extends Controller
      */
     public function insert(SignatureValidator $input)
     {
-        $insert = Signatures::create($input->except('_token'));
+        $current = Carbon::now();
+        $birth   = $input->dag .'/'. $input->maand .'/'. $input->jaar;
 
-        if ($insert) {
-            $message = 'Bedankt om de petitie te ondertekenen.';
-            $class   = 'alert alert-success';
-        } else {
-            $message = 'Wij konden uw ondertekening niet registreren.';
-            $class   = 'alert alert-danger';
-        }
+        Signatures::create([
+            'naam'          => $input->naam,
+            'geboortedatum' => $birth,
+            'email'         => $input->email,
+            'stad'          => $input->stad,
+            'leeftijd'      => 0 // Disable. reason: errors in the production server.
+        ]);
+
+        $message = 'Bedankt om de petitie te ondertekenen.';
+        $class = 'alert alert-success';
 
         session()->flash('class', $class);
         session()->flash('message', $message);
@@ -56,5 +114,57 @@ class SignatureController extends Controller
         $pdf->loadView('pdf.signature');
 
         return $pdf->stream();
+    }
+
+    /**
+     * Export the data to csv.
+     */
+    public function exportCsv()
+    {
+        Excel::create('Signatures', function ($csv) {
+            $csv->sheet('all', function($sheet) {
+                $signatures = Signatures::all();
+                $sheet->loadView('signature.report', compact('signatures'));
+            });
+        })->download('csv');
+    }
+
+    /**
+     * Export the data to excel.
+     */
+    public function exportExcel()
+    {
+        Excel::create('Signatures', function ($excel) {
+            $excel->sheet('all', function($sheet) {
+                $signatures = Signatures::all();
+                $sheet->loadView('signature.report', compact('signatures'));
+            });
+        })->download('xls');
+    }
+
+    /**
+     * Export the data to excel 2007.
+     */
+    public function exportExcel2007()
+    {
+        Excel::create('Signatures', function ($excel2007) {
+            $excel2007->sheet('all', function($sheet) {
+                $signatures = Signatures::all();
+                $sheet->loadView('signature.report', compact('signatures'));
+            });
+        })->download('xlsx');
+    }
+
+    /**
+     * Export the data to pdf.
+     */
+    public function exportPdf()
+    {
+        Excel::create('Signatures', function ($pdf) {
+            $pdf->sheet('all', function($sheet) {
+                $signatures = Signatures::all();
+                $sheet->loadView('signature.report', compact('signatures'));
+            });
+        })->download('pdf');
     }
 }
