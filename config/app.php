@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost:8000'),
 
     /*
     |--------------------------------------------------------------------------
@@ -171,6 +171,9 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         GrahamCampbell\GitHub\GitHubServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        Spatie\LinkChecker\LinkCheckerServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -180,7 +183,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        Laravelista\Ekko\EkkoServiceProvider::class
     ],
 
     /*
@@ -231,6 +234,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'GitHub' => GrahamCampbell\GitHub\Facades\GitHub::class,
+        'Ekko' => Laravelista\Ekko\Facades\Ekko::class,
     ],
 
 ];

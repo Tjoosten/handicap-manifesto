@@ -56,6 +56,7 @@
                         <div class="panel-heading">
                             <a class="label label-info" href="{{ asset('document.pdf') }}">Printbare versie</a>
                             <a class="label label-info" href="{{ asset('uitleg.pdf') }}">PDF: petitie uitleg</a>
+                            <a class="label label-primary" href="{!! route('quote.register') !!}">Getuigenissen</a>
                             <a class="label label-danger" href="{{ route('report') }}">Meld een probleem</a>
                             <div class="pull-right">
                                 <div class="fb-share-button" data-href="https://manifesto.idevelopment.be" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanifesto.idevelopment.be%2F&amp;src=sdkpreparse">Delen</a></div>
@@ -91,7 +92,7 @@
                             Petitie tekenen:
 
                             <div class="pull-right">
-                                {{ $signatures }}/<strong>100.000 Handtekeningen</strong>
+                                {{ $signatures }}/<strong>{!! Config::get('manifesto.counter') !!} Handtekeningen</strong>
                             </div>
                         </div>
                         <div class="panel-body">

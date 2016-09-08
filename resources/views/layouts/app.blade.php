@@ -43,11 +43,21 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 {{-- Left Side Of Navbar --}}
                 <ul class="nav navbar-nav">
-                    <li><a href="">Manifest</a></li>
-                    <li><a href="{{ route('signature.backend') }}">Handtekeningen</a></li>
-                    <li><a href="{{ route('users') }}">Login beheer</a></li>
-                    <li><a href="{{ route('feedback.backend') }}">Feedback</a></li>
-                    <li><a href="{{ route('settings.index') }}">Instellingen</a></li>
+                    <li class="{!! Ekko::isActiveRoute('manifest') !!}">
+                        <a href="">Manifest</a>
+                    </li>
+                    <li class="{!! Ekko::isActiveRoute('signature.backend') !!}">
+                        <a href="{{ route('signature.backend') }}">Handtekeningen</a>
+                    </li>
+                    <li class="{!! Ekko::isActiveRoute('users') !!}">
+                        <a href="{{ route('users') }}">Login beheer</a>
+                    </li>
+                    <li class="{{ Ekko::isActiveRoute('feedback.backend') }}">
+                        <a href="{{ route('feedback.backend') }}">Feedback</a>
+                    </li>
+                    <li class="{!! Ekko::isActiveRoute('settings.index') !!}">
+                        <a href="{{ route('settings.index') }}">Instellingen</a>
+                    </li>
                 </ul>
 
                 {{-- Right Side Of Navbar --}}

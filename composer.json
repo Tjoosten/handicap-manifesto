@@ -14,7 +14,10 @@
         "tecnick.com/tcpdf": "~6.0.0",
         "graham-campbell/github": "^4.4",
         "spatie/laravel-backup": "^3.10",
-        "larapack/config-writer": "^1.0"
+        "larapack/config-writer": "^1.0",
+        "laravelista/ekko": "^1.2",
+        "spatie/laravel-link-checker": "^1.0",
+        "spatie/laravel-permission": "^1.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
