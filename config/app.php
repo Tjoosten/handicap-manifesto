@@ -172,6 +172,8 @@ return [
         GrahamCampbell\GitHub\GitHubServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         Spatie\LinkChecker\LinkCheckerServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+
 
         /*
          * Application Service Providers...
